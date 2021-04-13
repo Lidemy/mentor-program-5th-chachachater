@@ -1,0 +1,31 @@
+{
+  "name": "mentor-program-5th",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ./homeworks/**/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lidemy/mentor-program-5th.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lidemy/mentor-program-5th/issues"
+  },
+  "homepage": "https://github.com/Lidemy/mentor-program-5th#readme",
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "@lidemy/eslint-config-lidemy": "^1.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4"
+  }
+}
