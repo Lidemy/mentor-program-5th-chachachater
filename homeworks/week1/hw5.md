@@ -7,8 +7,8 @@
 
 ## 假設我今天去 Google 首頁搜尋框打上：JavaScript 並且按下 Enter，請說出從這一刻開始到我看到搜尋結果為止發生在背後的事情
 
-1. 從按下 Enter 的那一刻，瀏覽器會向 DNS 伺服器送出網域名稱，找出網域名稱的對應 IP address (google server 的位置)。
-2. 瀏覽器會向找到的 IP address 送出 request，要對方交出關鍵字「Javascript」的搜尋結果
+1. 從按下 Enter 的那一刻，瀏覽器會向 DNS 伺服器送出網域名稱 google.com，找出網域名稱的對應 IP address (google server 的位置)。
+2. 瀏覽器會向找到的 IP address(172.217.160.78)送出 request，要對方交出關鍵字「Javascript」的搜尋結果
     > 根據使用的 protocal 不同，可以送出的 request 種類有HTTP, HTTPS, HTTP/2
 3. Server 收到 request，經過 database 處理之後送出 respond (HTML, CSS, JS, json, xml ...等)
 4. 瀏覽器收到 respond 然後進行 render，以 Chrome 的 Webkit engine 為例，流程如下：
