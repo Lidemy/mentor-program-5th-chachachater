@@ -26,7 +26,7 @@
 
 ## 交作業步驟２
 
-學習系統繳交作業
+學習系統繳交作業，把 PR 的連結複製起來交出
 
 ## 作業被改完之後：同步兩端
 
@@ -34,4 +34,4 @@
 
 delete branch :　`git branch -d week1`
 
-`git clone https://github.com/chachachater/test.git`
+`git pull origin main`
