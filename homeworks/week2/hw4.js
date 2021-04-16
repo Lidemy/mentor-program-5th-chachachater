@@ -1,4 +1,4 @@
-function printFactor(n) {
+ddddddddddddddddddfunction printFactor(n) {
   
 }
 
