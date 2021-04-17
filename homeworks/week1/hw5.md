@@ -10,7 +10,7 @@
 1. 從按下 Enter 的那一刻，瀏覽器會向 DNS 伺服器送出網域名稱，找出網域名稱的對應 IP address (google server 的位置)。
 2. 瀏覽器會向找到的 IP address 送出 request，要對方交出關鍵字「Javascript」的搜尋結果
     > 根據使用的 protocal 不同，可以送出的 request 種類有HTTP, HTTPS, HTTP/2
-3. Server 收到 request，經過 database 處理之後送出 respond (HTML, CSS, JS, json, xml ...等)
+3. Server 收到 request，去 database 撈出需要的資料之後送出 respond (HTML, CSS, JS, json, xml ...等)
 4. 瀏覽器收到 respond 然後進行 render，以 Chrome 的 Webkit engine 為例，流程如下：
     1. parse HTML 然後構成 DOM (= 把 HTML element 轉換成 nodes )
     2. parse CSS 然後構成 CSSOM
