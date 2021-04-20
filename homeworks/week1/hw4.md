@@ -16,6 +16,7 @@ Git 是用來做版本控制的程式，控制的方法以「使用資料夾來�
 ### 如果有很多笑話，每個笑話有不同版本的話
 1. 不同笑話分別用不同 branch 來管理，之後再 merge 到 main branch.
 2. 每個笑話有不同版本，有新的笑話版本的時候，可以開一個 branch 做管理，像圖片這樣↓（畫得不是很好看），之後再 merge 到 main branch，這樣 main 裡面的笑話就會是最新版本了。
+（ main 是最新的正式版本，因為有可能另外開 branch 來改進某個笑話，這樣雖然還沒改完，但也是比 main 上面的新了）
 
 [圖片](https://user-images.githubusercontent.com/71329979/115113390-b25c6600-9fbc-11eb-8426-be4c1647dd21.png)
 
