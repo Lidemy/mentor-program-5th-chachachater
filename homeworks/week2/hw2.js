@@ -1,5 +1,6 @@
-function capitalize(str) {
-  
+function capitalize (str) {
+  let capi = '';
+  capi += str[0].toUpperCase()
+  capi += str.substring(1)
+  return capi;
 }
-
-console.log(capitalize('hello'));
