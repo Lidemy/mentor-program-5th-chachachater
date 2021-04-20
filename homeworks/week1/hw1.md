@@ -51,5 +51,5 @@ nothing to commit, working tree clean
 
 delete branch :　`git branch -d week1`
 
-`git clone https://github.com/chachachater/test.git`
+`git pull origin main`
 * 如果 PR 沒過但是又把 delete branch的話，用`git pull`把檔案從 branch 拿回來
