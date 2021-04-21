@@ -3,11 +3,10 @@ function join(arr, concatStr) {
   for(let i = 0; i < arr.length; i++){
     if( i === arr.length - 1){
       str = str + arr[i]
-      break;
+      return str;
     }
     str += arr[i] + concatStr
   }
-  return str;
 }
 
 function repeat(str, times) {
