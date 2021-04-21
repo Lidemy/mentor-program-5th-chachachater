@@ -1,7 +1,7 @@
 function reverse (str) {
   let reverse = '';
-  for(let i = 0; i < str.length; i++){
-    reverse += str[str.length - 1 - i]
+  for(let i = str.length - 1; i >= 0; i--){
+    reverse += str[i]
   }
   console.log(reverse);
 }
