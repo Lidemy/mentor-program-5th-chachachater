@@ -1,29 +1,26 @@
-//直接做搜尋
+
 function search (arr, n) {
     binarySearch (arr, n)
 }
 
-function binarySearch (arr, n) { 
-    let start = 0
-    let end = arr.length - 1
-    let mid = (end - start) / 2
-    let midRight = Math.ceil(mid)
-    let midLeft = Math.floor(mid)
+function binarySearch(arr, n) {
+    let left = 0
+    let right = arr.length - 1
+    let mid = Math.floor((right + left) / 2)
 
-    if (n >= arr[midRight]) {
-        for (let i = midRight; i < arr.length; i++) {
-            if (arr[i] === n) {
-                return i
-            }
+    while (right - left > 1) {
+        if (arr[mid] === n) return mid
+        if (arr[mid] < n) {
+            left = mid + 1
+            mid = Math.floor((right + left) / 2)
         }
-        return -1
-    }
-    else {
-        for (let i = 0; i <= midLeft; i++) {
-            if (arr[i] === n) {
-                return i
-            }
+        else {
+            right = mid - 1
+            mid = Math.floor((right + left) / 2)
         }
-        return -1
     }
+    if (arr[right] === n) return right
+    else if (arr[left] === n) return left
+    else return -1
+
 }
