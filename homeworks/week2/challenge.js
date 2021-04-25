@@ -12,12 +12,11 @@ function binarySearch(arr, n) {
         if (arr[mid] === n) return mid
         if (arr[mid] < n) {
             left = mid + 1
-            mid = Math.floor((right + left) / 2)
         }
         else {
             right = mid - 1
-            mid = Math.floor((right + left) / 2)
         }
+        mid = Math.floor((right + left) / 2)
     }
     if (arr[right] === n) return right
     else if (arr[left] === n) return left
