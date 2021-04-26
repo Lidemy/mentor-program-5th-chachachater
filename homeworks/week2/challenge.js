@@ -1,6 +1,6 @@
 
 function search (arr, n) {
-    binarySearch (arr, n)
+    return binarySearch (arr, n)
 }
 
 function binarySearch(arr, n) {
