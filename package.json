@@ -21,11 +21,15 @@
   },
   "homepage": "https://github.com/Lidemy/mentor-program-5th#readme",
   "devDependencies": {
-    "eslint": "^7.23.0",
     "@lidemy/eslint-config-lidemy": "^1.0.0",
+    "eslint": "^7.25.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "husky": "^6.0.0",
     "lint-staged": "^10.5.4"
+  },
+  "description": "（第五期課綱還在調整中，現在看到的不是最終版）",
+  "directories": {
+    "example": "examples"
   }
 }
