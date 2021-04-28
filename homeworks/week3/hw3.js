@@ -8,25 +8,30 @@ rl.on('line', (line) => {
   lines.push(line)
 })
 rl.on('close', () => {
-  solution(lines)
+  solve(lines)
 })
 
-function solution(lines) {
+function solve(lines) {
   const length = Number(lines[0])
   const arr = []
   for (let i = 1; i < length + 1; i++) {
     arr.push(Number(lines[i]))
   }
   for (let i = 0; i < length; i++) {
-    console.log(isPrime(arr[i]))
+    const answer = isPrime(arr[i])
+    if (answer === 1) {
+      console.log('Composite')
+    }
+    else console.log('Prime')
   }
+  return
 }
 
 function isPrime(num) {
   const mid = Math.sqrt(num)
-  if (num === 1) return 'Composite'
+  if (num === 1) return 1
   for (let i = 2; i <= mid; i++) {
-    if (num % i === 0) return 'Composite'
+    if (num % i === 0) return 1
   }
-  return 'Prime'
+  return -1
 }
