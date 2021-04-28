@@ -8,10 +8,10 @@ rl.on('line', (line) => {
   lines.push(line)
 })
 rl.on('close', () => {
-  solution(lines)
+  solve(lines)
 })
 
-function solution(lines) {
+function solve(lines) {
   const line = Number(lines[0])
   for (let i = 0; i < line; i++) {
     let str = ''
