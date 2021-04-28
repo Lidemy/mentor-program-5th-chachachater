@@ -8,10 +8,10 @@ rl.on('line', (line) => {
   lines.push(line)
 })
 rl.on('close', () => {
-  solution(lines)
+  solve(lines)
 })
 
-function solution(lines) {
+function solve(lines) {
   const group = Number(lines[0])
   const arr = []
   for (let i = 1; i < group + 1; i++) {
@@ -40,7 +40,6 @@ function playGame(a, b, k) {
     for (let i = 0; i < aLength; i++) {
       if (a[i] > b[i]) return 'A'
       else if (a[i] < b[i]) return 'B'
-      else { continue }
     }
     return 'DRAW'
   }
