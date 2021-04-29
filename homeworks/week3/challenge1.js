@@ -59,7 +59,7 @@ function findShortPath(maze) {
       const nextY = y + d.dy
       if (nextX > length - 1 || nextY > height - 1 || nextY < 0 || nextX < 0 || maze[nextY][nextX] !== '.') {
         // height 從 1 開始算
-        // 用 !== '#' 會不能 AC, 為什麼?
+        // 用 === '#' 也可以 AC
         continue
       }
       if (steps[nextY][nextX] !== undefined) {
