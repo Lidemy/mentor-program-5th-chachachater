@@ -1,4 +1,3 @@
-/*eslint-disable*/
 const maze = [
   '..########',
   '#........#',
@@ -11,9 +10,16 @@ const maze = [
   '#.######.#',
   '########..']
 
+const obj = {
+  height: maze.length,
+  length: maze[0].length
+}
+
 function findShortPath(maze) {
-  const height = maze.length
-  const length = maze[0].length
+  const { height, length } = obj
+  //  原本的作法:
+  //  const height = maze.length
+  //  const length = maze[0].length
   const endY = height - 1
   const endX = length - 1
   const steps = [] // 存放走到 (y,x) 的最短步數
