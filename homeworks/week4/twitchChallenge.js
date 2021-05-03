@@ -17,8 +17,8 @@ function getGameHeader() {
     url: `${baseUrlForGame}?name=${gameName}`,
     headers: {
       'User-Agent': 'request',
-      Authorization: 'Bearer lcvzkb6y9enejyx7nmv8ov0oanq6ia',
-      'Client-Id': 'qm66ogvzwsxrzkdyrfrxi748glwjo9'
+      Authorization: 'Bearer /*這裡要放 Token*/',
+      'Client-Id': '/*這裡要放Client-Id*/'
     }
   }
   return gameHeader
@@ -56,8 +56,8 @@ function getStreamHeader() {
     url: `${baseUrlForStream}?game_id=${gameId}&first=${dataNumber}`,
     headers: {
       'User-Agent': 'request',
-      Authorization: 'Bearer lcvzkb6y9enejyx7nmv8ov0oanq6ia',
-      'Client-Id': 'qm66ogvzwsxrzkdyrfrxi748glwjo9'
+      Authorization: 'Bearer /*這裡要放 Token*/',
+      'Client-Id': '/*這裡要放Client-Id*/'
     }
   }
   return streamHeader
@@ -99,8 +99,8 @@ function getSecondStreamHeader() {
     url: `${baseUrlForStream}?game_id=${gameId}&first=${dataNumber}&after=${cursor}`,
     headers: {
       'User-Agent': 'request',
-      Authorization: 'Bearer lcvzkb6y9enejyx7nmv8ov0oanq6ia',
-      'Client-Id': 'qm66ogvzwsxrzkdyrfrxi748glwjo9'
+      Authorization: 'Bearer /*這裡要放 Token*/',
+      'Client-Id': '/*這裡要放Client-Id*/'
     }
   }
   return secondStreamHeader
