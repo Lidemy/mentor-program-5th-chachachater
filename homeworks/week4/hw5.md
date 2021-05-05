@@ -1,3 +1,5 @@
+[好讀版](https://hackmd.io/@ouR5x-oVSMy4d8R5uFsKNg/Hk9imL4v_)
+
 ## 請以自己的話解釋 API 是什麼
 
 API 是一個會根據傳進去的 request 來回傳對應的 respond 的程式介面。如果以我自己的理解來比喻，reqset 和 API 和 response 之間的運作比較像是：
@@ -84,7 +86,31 @@ Base URL: https://rainbow-restaurant.com
 | 說明| Method | path| 參數| 範例|
 | ---------------- | ------ | ---------- | ------- | -----|
 | 回傳所有餐廳資料 | GET| /restaurants| _limit:限制回傳資料數量 | /restaurants?_limit=5 |
-| 回傳單一餐廳資料 | GET    | /restaurants /:id | --------| restaurants /:10      |
+| 回傳單一餐廳資料 | GET    | /restaurants /:id | --------| /restaurants/:10      |
 | 刪除餐廳| DELETE | /restaurants /:id | --------| -------- |
 | 新增餐廳| POST   | /restaurants| name: 餐廳名稱| --------|
 | 更改餐廳| PATCH  | /restaurants /:id | name: 餐廳名稱 | -------- |
+
+### 範例
+* 回傳所有餐廳資料：
+`https://rainbow-restaurant.com/restaurants?_limit=5`
+
+* 回傳單一餐廳資料：
+`https://rainbow-restaurant.com/restaurants/:10`
+
+* 刪除餐廳：
+`https://rainbow-restaurant.com/restaurants/:10`
+
+* 新增餐廳：
+`https://rainbow-restaurant.com/restaurants`
+BODY:
+`{
+  name: '咬一口廚房'
+}`
+
+* 更改餐廳：
+`https://rainbow-restaurant.com/restaurants/:10`
+BODY:
+`{
+  name: '咬三口廚房'
+}`
