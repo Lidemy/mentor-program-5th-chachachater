@@ -10,9 +10,9 @@ const gameName = process.argv[2] // 輸入要搜尋的遊戲名稱
 
 const baseUrlForGame = 'https://api.twitch.tv/helix/games'
 
-// 搜尋 遊戲id 用的 header 是 gameHeader, 使用的 callback 是 getGameInfo
+// 搜尋 遊戲id 用的 header 是 game, 使用的 callback 是 getGameInfo
 
-function getGameHeader() {
+function getGameOptions() {
   const gameHeader = {
     url: `${baseUrlForGame}?name=${gameName}`,
     headers: {
@@ -44,13 +44,13 @@ function getGameInfo(error, response, body) {
     return
   }
   console.log('遊戲搜尋結束')
-  request(getStreamHeader(), getStreamInfo)
+  request(getStreamOptions(), getStreamInfo)
 }
 
 // 總共搜尋了兩次實況主資訊，第一次搜尋實況主用的 header 是 streamHeader, 使用的 callback 是 getStreamInfo
 // 第二次搜尋實況主用的 header 是 SecondStreamHeader, 使用的 callback 是 getSecondStreamInfo
 
-function getStreamHeader() {
+function getStreamOptions() {
   const streamHeader =
   {
     url: `${baseUrlForStream}?game_id=${gameId}&first=${dataNumber}`,
@@ -93,7 +93,7 @@ function getStreamInfo(error, response, body) {
   request(getSecondStreamHeader(), getSecondStreamInfo)
 }
 
-function getSecondStreamHeader() {
+function getSecondStreamOptions() {
   const secondStreamHeader =
   {
     url: `${baseUrlForStream}?game_id=${gameId}&first=${dataNumber}&after=${cursor}`,
@@ -141,4 +141,4 @@ function getSecondStreamInfo(error, response, body) {
   }
 }
 
-request(getGameHeader(), getGameInfo)
+request(getGameOptions(), getGameInfo)
