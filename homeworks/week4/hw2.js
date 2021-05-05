@@ -11,15 +11,31 @@ switch (userInput1) {
     listBooks()
     break
   case 'read':
+    if (!userInput2) {
+      console.log('請輸入要查詢書本的 id')
+      return
+    }
     readOneBook(userInput2)
     break
   case 'delete':
+    if (!userInput2) {
+      console.log('請輸入要刪除書本的 id')
+      return
+    }
     deleteOneBook(userInput2)
     break
   case 'create':
+    if (!userInput2) {
+      console.log('請輸入要新增書本的 id')
+      return
+    }
     createOneBook(userInput2)
     break
   case 'update':
+    if (!userInput2 || !userInput3) {
+      console.log('請輸入要更新書本的 id 或要新增的內容')
+      return
+    }
     updateOneBook(userInput2, userInput3)
     break
   default:
@@ -30,6 +46,10 @@ function listBooks() {
   request.get(
     'https://lidemy-book-store.herokuapp.com/books?_limit=20',
     (error, response, body) => {
+      if (response.statusCode < 200 || response.statusCode > 300) {
+        console.log('錯誤, statusCode :', response.statusCode)
+        return
+      }
       if (error) {
         console.log('錯誤', error)
         return
@@ -52,6 +72,10 @@ function readOneBook(id) {
   request.get(
     `https://lidemy-book-store.herokuapp.com/books/${id}`,
     (error, response, body) => {
+      if (response.statusCode < 200 || response.statusCode > 300) {
+        console.log('找不到這本書, 發生錯誤, statusCode :', response.statusCode)
+        return
+      }
       if (error) {
         console.log('錯誤', error)
         return
@@ -72,6 +96,10 @@ function deleteOneBook(id) {
   request.delete(
     `https://lidemy-book-store.herokuapp.com/books/${id}`,
     (error, response, body) => {
+      if (response.statusCode < 200 || response.statusCode > 300) {
+        console.log('找不到這本書, 發生錯誤, statusCode :', response.statusCode)
+        return
+      }
       if (error) {
         console.log('錯誤', error)
         return
@@ -90,7 +118,11 @@ function createOneBook(bookName) {
         name: userInput2 // 雖然對方 API 默認會加上 id 這個 key，但 id 順序會被放在 'name' 後面, 所以我額外放上 'id' key 來處理這個問題
       }
     },
-    (error, httpResponse, body) => {
+    (error, response, body) => {
+      if (response.statusCode < 200 || response.statusCode > 300) {
+        console.log('錯誤, statusCode :', response.statusCode)
+        return
+      }
       if (error) {
         console.log('錯誤', error)
         return
@@ -108,7 +140,11 @@ function updateOneBook(id, bookName) {
         name: userInput3
       }
     },
-    (error, httpResponse, body) => {
+    (error, response, body) => {
+      if (response.statusCode < 200 || response.statusCode > 300) {
+        console.log('找不到這本書, 發生錯誤, statusCode :', response.statusCode)
+        return
+      }
       if (error) {
         console.log('錯誤', error)
         return
