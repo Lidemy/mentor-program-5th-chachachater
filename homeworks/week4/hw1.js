@@ -25,8 +25,6 @@ request.get(
       console.log('取得 JSON 時發生錯誤:', err)
       return
     }
-
-
     }
   }
 )
