@@ -58,12 +58,12 @@ function listBooks() {
       let bodyParse
       try {
         bodyParse = JSON.parse(body)
+        for (let i = 0; i < 20; i++) {
+          const { id, name } = bodyParse[i]
+          console.log(`${id} ${name}`)
+        }
       } catch (error) {
         console.log('response 不是一個合法的 JSON 字串:', error) // json錯誤處理
-      }
-      for (let i = 0; i < 20; i++) {
-        const { id, name } = bodyParse[i]
-        console.log(`${id} ${name}`)
       }
     }
   )
@@ -84,11 +84,11 @@ function readOneBook(id) {
       let bodyParse
       try {
         bodyParse = JSON.parse(body)
+        const { id, name } = bodyParse
+        console.log(`${id} ${name}`)
       } catch (error) {
         console.log('response 不是一個合法的 JSON 字串:', error) // json錯誤處理
       }
-      const { id, name } = bodyParse
-      console.log(`${id} ${name}`)
     }
   )
 }
