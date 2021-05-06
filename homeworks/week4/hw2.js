@@ -5,6 +5,7 @@ const process = require('process')
 const userInput1 = process.argv[2]
 const userInput2 = process.argv[3]
 const userInput3 = process.argv[4]
+const baseURL = 'https://lidemy-book-store.herokuapp.com'
 
 switch (userInput1) {
   case 'list':
@@ -44,7 +45,7 @@ switch (userInput1) {
 
 function listBooks() {
   request.get(
-    'https://lidemy-book-store.herokuapp.com/books?_limit=20',
+    `${baseURL}/books?_limit=20`,
     (error, response, body) => {
       if (response.statusCode < 200 || response.statusCode > 300) {
         console.log('錯誤, statusCode :', response.statusCode)
@@ -70,7 +71,7 @@ function listBooks() {
 
 function readOneBook(id) {
   request.get(
-    `https://lidemy-book-store.herokuapp.com/books/${id}`,
+    `${baseURL}/books/${id}`,
     (error, response, body) => {
       if (response.statusCode < 200 || response.statusCode > 300) {
         console.log('找不到這本書, 發生錯誤, statusCode :', response.statusCode)
@@ -94,7 +95,7 @@ function readOneBook(id) {
 
 function deleteOneBook(id) {
   request.delete(
-    `https://lidemy-book-store.herokuapp.com/books/${id}`,
+    `${baseURL}/books/${id}`,
     (error, response, body) => {
       if (response.statusCode < 200 || response.statusCode > 300) {
         console.log('找不到這本書, 發生錯誤, statusCode :', response.statusCode)
@@ -112,7 +113,7 @@ function deleteOneBook(id) {
 function createOneBook(bookName) {
   request.post(
     {
-      url: 'https://lidemy-book-store.herokuapp.com/books',
+      url: `${baseURL}books`,
       form: {
         id: '',
         name: userInput2 // 雖然對方 API 默認會加上 id 這個 key，但 id 順序會被放在 'name' 後面, 所以我額外放上 'id' key 來處理這個問題
@@ -135,7 +136,7 @@ function createOneBook(bookName) {
 function updateOneBook(id, bookName) {
   request.patch(
     {
-      url: `https://lidemy-book-store.herokuapp.com/books/${userInput2}`,
+      url: `${baseURL}/books/${userInput2}`,
       form: {
         name: userInput3
       }
