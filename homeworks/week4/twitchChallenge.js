@@ -78,10 +78,12 @@ function getStreamInfo(error, response, body) {
 
   try {
     for (let i = 0; i < parseInfo.data.length; i++) {
-      const singleStream = {}
-      singleStream.id = parseInfo.data[i].id
-      singleStream.gameName = parseInfo.data[i].user_name
-      streamInfo.push(singleStream)
+      streamInfo.push(
+        {
+          id = parseInfo.data[i].id,
+          gameName = parseInfo.data[i].user_name
+        }
+      )
     }
   } catch (error) {
     console.log('找不到該遊戲的實況資訊')
@@ -134,7 +136,7 @@ function getSecondStreamInfo(error, response, body) {
   console.log('第二次實況搜尋結束')
   console.log('顯示 "實況的名稱 : id"')
   for (let i = 1; i <= streamInfo.length; i++) {
-    if (streamInfo[i] === undefined) return
+    if (!streamInfo[i]) return
     const streamName = streamInfo[i].gameName
     const streamId = streamInfo[i].id
     console.log(`${i}. ${streamName} : ${streamId}`)
