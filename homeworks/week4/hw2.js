@@ -65,6 +65,7 @@ function listBooks() {
       } catch (error) {
         console.log('response 不是一個合法的 JSON 字串:', error) // json錯誤處理
       }
+      return
     }
   )
 }
@@ -89,6 +90,7 @@ function readOneBook(id) {
       } catch (error) {
         console.log('response 不是一個合法的 JSON 字串:', error) // json錯誤處理
       }
+      return
     }
   )
 }
@@ -106,6 +108,7 @@ function deleteOneBook(id) {
         return
       }
       console.log('刪除成功')
+      return
     }
   )
 }
@@ -129,6 +132,7 @@ function createOneBook(bookName) {
         return
       }
       console.log('新增成功')
+      return
     }
   )
 }
@@ -151,6 +155,7 @@ function updateOneBook(id, bookName) {
         return
       }
       console.log('更新成功')
+      return
     }
   )
 }
