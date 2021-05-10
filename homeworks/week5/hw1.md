@@ -30,8 +30,34 @@
 ### 解題心得
 #### Lidemy HTTP Challenge 心得
 
-我解到第 11 關，共花了 120 分鐘，解到第 10 關的時候最開心，除了發現後面還可以解之外，也看到前幾屆同學的 github 留言，下面大家都在簽到，所以我也跟風簽了一下XD。
-解關卡的時候覺得 request library 真的是簡單又好用的套件，滿多題靠它 carry 過的，真是有夠罩。解的過程中發現自己對 "content-type", "http authentication", "form" 這些概念還不清楚，需要再去理解。
+我解到第 11 關，共花了 120 分鐘，解到第 10 關的時候最開心，除了發現後面還可以解之外，也看到前幾屆同學的 github 留言，下面大家都在簽到，所以我也跟風簽了一下XD。後面五關的心得我額外寫在[這邊](https://hackmd.io/@ouR5x-oVSMy4d8R5uFsKNg/H17rSK1u_)。
+解關卡的時候覺得 request library 真的是簡單又好用的套件，滿多題靠它 carry 過的，真是有夠罩。解的過程中發現自己對 "content-type", "http authentication", "form" 這些概念還不清楚，查資料之後認為是以下的意思：
+
+##### HTTP authentication
+
+HTTP 有內建的 framework 可以對 client requset 做驗證，驗證流程如下：
+![](https://i.imgur.com/cqalagm.png)
+(圖片來源：https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication)
+
+收到 request 之後，server 回傳要做認證的 response，client 再根據資訊回傳 request，附上`Authorization: <type> <credentials>` 這個 header。
+
+> 資料來源：[MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication)
+
+##### POST 提供資料給 server 的幾種方式
+POST method 跟 GET mehtod 的不同在於，POST 會傳送額外資訊(form data，放在 body)給 sever，這份額外資訊的傳送格式(content type)有幾種：
+
+1. `content type:'application/x-www-form-urlencoded'`
+1. `content type:'multipart/form-data'`
+1. `content type:'text/plain'`
+1. `content type:'application/json'`
+(這邊則是放在 header 裡面)
+
+至於該怎麼寫出一個帶有特定 form 的 POSE request，[這裡有範例可以看](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data#on_the_client_side_defining_how_to_send_the_data)，或是用 request npm 有預設好的 method 可以使用。
+
+除了直接傳送資料以外，也可以用 XMLHttpRequest 來傳送 POST 的資料(?)
+> 資料來源：
+> [POST](https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Methods/POST)
+> [Sending form data](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data)
 
 #### LIOJ 大平台
 
