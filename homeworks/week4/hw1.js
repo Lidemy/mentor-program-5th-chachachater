@@ -17,14 +17,14 @@ request.get(
     let bodyParse = ''
     try { // 處理錯誤情況例如: url 錯誤, 一樣會正常送出 reuqest 但會得到錯誤的 bodyParse
       bodyParse = JSON.parse(body)
-      for (let i = 0; i < 10; i++) {
-      const { id } = bodyParse[i]
-      const { name } = bodyParse[i]
-      console.log(`${id} ${name}`)
     } catch (err) {
       console.log('取得 JSON 時發生錯誤:', err)
       return
     }
+    for (let i = 0; i < 10; i++) {
+      const { id } = bodyParse[i]
+      const { name } = bodyParse[i]
+      console.log(`${id} ${name}`)
     }
   }
 )
