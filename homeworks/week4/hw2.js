@@ -58,12 +58,12 @@ function listBooks() {
       let bodyParse
       try {
         bodyParse = JSON.parse(body)
-        for (let i = 0; i < 20; i++) {
-          const { id, name } = bodyParse[i]
-          console.log(`${id} ${name}`)
-        }
       } catch (error) {
         console.log('response 不是一個合法的 JSON 字串:', error) // json錯誤處理
+      }
+      for (let i = 0; i < 20; i++) {
+        const { id, name } = bodyParse[i]
+        console.log(`${id} ${name}`)
       }
       return
     }
@@ -85,11 +85,11 @@ function readOneBook(id) {
       let bodyParse
       try {
         bodyParse = JSON.parse(body)
-        const { id, name } = bodyParse
-        console.log(`${id} ${name}`)
       } catch (error) {
         console.log('response 不是一個合法的 JSON 字串:', error) // json錯誤處理
       }
+      const { id, name } = bodyParse
+      console.log(`${id} ${name}`)
       return
     }
   )
@@ -116,13 +116,14 @@ function deleteOneBook(id) {
 function createOneBook(bookName) {
   request.post(
     {
-      url: `${baseURL}books`,
+      url: `${baseURL}/books`,
       form: {
         id: '',
         name: userInput2 // 雖然對方 API 默認會加上 id 這個 key，但 id 順序會被放在 'name' 後面, 所以我額外放上 'id' key 來處理這個問題
       }
     },
     (error, response, body) => {
+      console.log(response)
       if (response.statusCode < 200 || response.statusCode > 300) {
         console.log('錯誤, statusCode :', response.statusCode)
         return
