@@ -23,7 +23,7 @@ request.get(
     }
     for (let i = 0; i < 10; i++) {
       const gameName = bodyParse.top[i].game.name
-      const gameViewers = bodyParse.top[i].game.name.viewers
+      const gameViewers = bodyParse.top[i].viewers
       console.log(`${gameViewers}  ${gameName}`)
     }
   }
