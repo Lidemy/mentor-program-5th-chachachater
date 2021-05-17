@@ -1,0 +1,43 @@
+/* 待解:為什麼用 z-index 不能讓 checkbox 在最上層? */
+/* 原因: The z-index property only works on elements with a position value other than static */
+
+/* 用設成 block 的 span 來做出三條線 */
+span {
+  background-color: black;
+  height: 6px;
+  width: 29px;
+  display: block;
+  margin: 6px;
+  position: relative;
+  top: -41px;
+  left: -1px;
+  z-index: 0;
+}
+
+input {
+  height: 31px;
+  width: 31px;
+  /* 讓 inputbox 的框框變透明 */
+  opacity: 0;
+  position: relative;
+  z-index: 1;
+}
+
+ul {
+  /* border: 1px solid black; 方便微調用*/
+  width: 300px;
+  position: absolute;
+  top: 25px;
+  left: 12px;
+  /* 清單原本飄出視窗外, ckeckbox 被點擊之後取消 transform 讓清單飄回來 */
+  transform: translate(0, -160%);
+}
+
+.menu-list li {
+  padding: 10px;
+  list-style-type: none;
+}
+
+input:checked ~ ul {
+  transform: none;
+}
