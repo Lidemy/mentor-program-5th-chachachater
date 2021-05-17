@@ -1,5 +1,4 @@
 # week6 hw3
-
 [好讀版](https://hackmd.io/@ouR5x-oVSMy4d8R5uFsKNg/Hy-CfRg_O)
 
 ## 請找出三個課程裡面沒提到的 HTML 標籤並一一說明作用。
@@ -24,7 +23,7 @@
 * 送出的表單格式會長下圖這樣(使用 chrome) ↓↓
 ![表單格式](https://i.imgur.com/14uAVtI.png)
 
-* 成果長這樣 ↓
+* 成果(圖片)長這樣 ↓
 ![成果](https://i.imgur.com/XrhirrF.png)
 
 
@@ -59,7 +58,7 @@
 ```
 ---
 
-成果(可以從自料夾的檔案開啟實際網頁) ↓
+成果(可以從資料夾的檔案開啟實際網頁) ↓
 ![](https://i.imgur.com/jk6HZ5Z.png)
 
 ### `<button>`，就是一個按鈕
