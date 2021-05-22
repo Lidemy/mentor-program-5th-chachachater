@@ -71,7 +71,7 @@
 ```
 
 * `<input type="button" />`click之後，預設狀態下不會做甚麼事，也不會把表單資料送出。
-* `<input type="button" />`click之後，預設狀態下會把表單資料送出(+刷新頁面)，它屬於表單資料的一部分，所以 value 會一起送出。
+* `<input type="submit" />`click之後，預設狀態下會把表單資料送出(+刷新頁面)，它屬於表單資料的一部分，所以 value 會一起送出。
 * `<button>` 就只是一個按鈕，click 之後會發生什麼事情需要再做設定。如果放在`<form>`裡面則會把表單送出，但它不屬於表單資料的一部分，所以 value 不會一起送出。
 
 ### `<details>`，做出摺疊/展開的效果
@@ -106,15 +106,15 @@ padding 相當於一個國家把國界線往外推(國土 = content 變大了)�
   * 例如：span, a
   * 可以並排，但調寬高、上下邊距(padding)沒有用，上下邊距(padding)沒有用是指**對 content 沒有用**，實際上的 padding 還是可以被改變，只是元素之間的 padding 可能會重疊，像這樣：
   ![](https://miro.medium.com/max/500/1*U7JLhI6IHWQk6twON8AXHg.png)
-* block-inline
+* inline-block
   * 例如：button, input, select
   * 對外像 inline，對內像 block，也就是它是可以被並排的 block，並且可以調整寬高、padding。
 
 ## 請問 position: static, relative, absolute 跟 fixed 的差別是什麼？
 
-* `position: static`根據元素**預設**的樣式(inline/block)來決定位置
+* `position: static`根據元素**排版流**的樣式(inline/block)來決定位置
 * `position: relative`相對於本身預設位置來做移動，移動之後不會影響其他元素的位置
-* `position: absolute`往上層找出第一個不是static的元素，作為基準點來做移動，移動之後會影響其他元素的位置。 通常會搭配`position: relative`來做定位，或是搭配` transform:translate(x, y)`來做位移，具體做法如下面段落。
+* `position: absolute`往上層找出第一個不是static的元素，作為基準點來做移動，移動之後會影響其他元素的位置。 通常會搭配設定上層元素`position: relative`來做定位，或是搭配` transform:translate(x, y)`來做位移，具體做法如下面段落。
 * `position: fixed`相對於 viewport 來做定位(類似於瀏覽器的視窗)，真的就像是一張黏在螢幕上的便利貼，不管視窗怎麼滾動，element 都會在固定位置
 
 ### `position: absolute`來做置中的方法
