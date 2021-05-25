@@ -1,0 +1,156 @@
+html,
+body{
+  width:100%;
+  overflow-x:hidden;
+  background: #eee;
+  font-family: 'Questrial', 'MicrosoftJhengHei', sans-serif;
+}
+
+form {
+  padding-left:42px;
+  padding-bottom: 35px;
+  border-top: 6px solid #fad312;
+  background-color: white;
+}
+
+.basic-information *,
+.question *,
+.other * {
+  display: flex;
+  font-size:20px;
+}
+
+.type-of-application * {
+  font-size:20px;
+}
+
+
+h1 {
+  font-size: 36px;
+  margin-top: 54px;
+  margin-bottom: 35px;
+}
+
+ul{
+  padding: 0px;
+}
+
+li {
+  list-style-type: none;
+  font-size: 14px;
+  margin-bottom: 11px;
+}
+
+.require {
+  font-size: 16px;
+  color:#e74149;
+  margin-bottom: 55px;
+  padding-left: 10px;
+}
+
+section sup {
+  top: 0.35em;
+  left: 0.5em;
+  color:#e74149;
+}
+
+p > sup {
+  left: -0.5em;
+}
+
+.type-of-application sup {
+  top: -0.2em;
+  left: 0.5em;
+}
+
+.type-of-application .wrapper {
+  margin-top: 23px;
+}
+
+.type-of-application label,
+.notion,
+.other .wrapper p {
+  font-size: 14px;
+}
+
+section {
+  margin-bottom: 49px;
+}
+
+.question label,
+.basic-information label {
+  margin-bottom: 20px;
+}
+
+.basic-information label:nth-child(2n+3) {
+  margin-top: 50px;
+}
+
+.other .wrapper p {
+  margin: 2.5em 0em 0em -40px;
+}
+
+.notion {
+  margin:21px 0px 0px 0px;
+}
+
+.other label{
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.button {
+  border: none;
+  font-size: 15px;
+  background: #fad312;
+  height:40px;
+  width:92px;
+  border-radius: 3px;
+}
+
+input[type="text"],
+input[type="email"] {
+  border: none;
+  border-bottom: solid 2px #d0d0d0;
+  width: 287px;
+  height: 23px;
+  font-size: 16px;
+}
+
+input[type="radio"] {
+  margin-right: 9px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  outline: none;
+  border-bottom: solid 2px #fad312;
+  transition: 0.7s;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  height:60px;
+  background-color:#000000;
+  color:#999999;
+}
+
+.notice {
+  font-size: 16px;
+  color: red;
+  margin-top: 10px;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+@media(min-width: 768px) {
+  form {
+    width: 645px;
+    margin: 121px auto 66px;
+  }
+}
