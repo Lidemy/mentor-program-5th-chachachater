@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Position</title>
+    <link rel="stylesheet" href="./Flex.css" />
+    <style>
+      .color {
+        background: royalblue;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="debug">
+      <section class="container">
+        <div class="card">
+          <div class="card-thumbnails"></div>
+          <div class="card-info">
+            <h1 class="card-title">
+              <div class="mark"></div>
+              Title
+            </h1>
+            <p class="card-date">
+              2019/01/02 <span class="card-time">13:02</span>
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-thumbnails"></div>
+          <div class="card-info">
+            <h1 class="card-title">
+              <div class="mark"></div>
+              Title
+            </h1>
+            <p class="card-date">
+              2019/01/02 <span class="card-time">13:02</span>
+            </p>
+          </div>
+        </div>
+        <div id="card">
+          <div class="card-thumbnails"></div>
+          <div class="card-info">
+            <h1 class="card-title">
+              <div class="mark"></div>
+              Title
+            </h1>
+            <p class="card-date">
+              2019/01/02 <span class="card-time">13:02</span>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      const element = document.querySelector("h1")
+      element.addEventListener('click', onClick)
+      function onClick (e) {
+        console.log(e)
+      }
+
+    </script>
+  </body>
+</html>

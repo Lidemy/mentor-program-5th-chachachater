@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test list</title>
+  </head>
+  <body class="debug">
+    <div class="top">
+      <a href="https://tw.yahoo.com">top link to Yahoo奇摩</a>
+      <div class="middle">
+        <a href="https://www.google.com.tw/">middle link to google</a>
+        <div class="bottom">
+          <a href="https://term.ptt.cc/">bottom link to ptt</a>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.querySelector('.middle a:first-child')
+        .addEventListener('click', (event) => {
+          event.stopPropagation()
+          console.log(event)
+        })
+    </script>
+  </body>
+</html>

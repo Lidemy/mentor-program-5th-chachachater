@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>最推薦的儲存方式：local storage</title>
+  </head>
+  <body>
+    <div clas="app">
+      <div>
+        <input class="text" />
+        <button>儲存</button>
+      </div>
+    </div>
+
+    <script>
+      const oldValue = window.localStorage.getItem("text");
+      document.querySelector(".text").value = oldValue;
+      document.querySelector("button").addEventListener("click", function () {
+        const value = document.querySelector(".text").value;
+        window.localStorage.setItem("text", value);
+      });
+    </script>
+  </body>
+</html>
