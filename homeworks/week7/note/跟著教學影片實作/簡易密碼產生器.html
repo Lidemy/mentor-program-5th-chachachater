@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>簡易密碼產生器</title>
+</head>
+<body>
+
+  <div clas="app">
+    <div><label><input type="checkbox" name="en"/>english</label></div>
+    <div><label><input type="checkbox" name="math" />math</label></div>
+    <div><label><input type="checkbox" name="sp"/>special symbol</label></div>
+    <div>
+      <button class="btn-generate">產生</button>
+    </div>
+    <div class="result"></div>
+  </div>
+  
+  <script>
+    function getChar (name, char) {
+      // if (document.querySelector('input[name='+name+']').checked) {
+        if (document.querySelector(`input[name=${name}]`).checked) {
+          return char
+        }
+        return ""
+    }
+    document.querySelector(".btn-generate").addEventListener('click',
+      function() {
+        let availableChar = ''
+        availableChar += getChar ('en', 'abcdefghijklmnopqrstuvwxyz')
+        availableChar += getChar ('math', '0123456789')
+        availableChar += getChar ('sp', '!@#$%^&*()')
+        if (availableChar === '') {
+          alert('請至少勾選一個項目！')
+          return
+          }
+        let result = ''
+        for (let i=0; i<10; i++) {
+          const number = Math.floor(Math.random() * availableChar.length)
+          result +=  availableChar[number]
+        }
+        console.log(availableChar)
+        console.log(result)
+        document.querySelector('.result').innerText = result
+      }
+      )
+  </script>
+</body>
+</html>
