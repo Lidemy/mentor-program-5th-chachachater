@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="normalize.css" />
+    <link href="./stylesheet.css" rel="stylesheet" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form method="POST" action="#">
+      <h1>新拖延運動報名表單</h1>
+
+      <ul>
+        <li>活動日期：2020/12/10 ~ 2020/12/11</li>
+        <li>活動地點：台北市大安區新生南路二段1號</li>
+      </ul>
+
+      <p class="require"><sup>*</sup>必填</p>
+
+      <section class="section__basic-information">
+        <label for="nickname">暱稱<sup>*</sup></label>
+        <input type="text" name="basic-information__nickname" id="nickname" placeholder="您的回答" />
+        <label for="email">電子郵件<sup>*</sup></label>
+        <input type="email" name="basic-information__emial" id="email" placeholder="您的電子郵件" />
+        <label for="phone-number">手機號碼<sup>*</sup></label>
+        <input type="text" name="basic-information__phone-number" id="phone-number" placeholder="您的手機號碼"  />
+      </section>
+
+      <section class="section__type-of-application">
+        報名類型<sup>*</sup>
+        <div class="wrapper">
+          <input type="radio" name="type-of-application" value="A" id="type1" />
+          <label for="type1">躺在床上用想像力實作</label>
+        </div>
+        <div class="wrapper">
+          <input type="radio" name="type-of-application" value="B" id="type2" />
+          <label for="type2">趴在地上滑手機找現成的</label>
+        </div>
+      </section>
+
+      <section class="section__question">
+        <label for="qusetion">怎麼知道這個活動的？<sup>*</sup></label>
+        <input type="text" name="qusetion" id="qusetion" placeholder="您的回答" />
+      </section>
+
+      <section class="section__other">
+        <div class="wrapper">
+          <label for="other">
+            其他
+            <p>對活動的一些建議</p>
+          </label>
+        </div>
+        <input type="text" name="other" id="other" placeholder="您的回答" />
+      </section>
+
+      <input class="button" type="submit" value="提交" />
+
+      <p class="notion">請勿透過表單送出您的密碼。</p>
+    </form>
+
+    <footer class="footer">© 2020 © Copyright. All rights Reserved.</footer>
+
+    <script src="./javaScript.js"></script>
+  </body>
+</html>
