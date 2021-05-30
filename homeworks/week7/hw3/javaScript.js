@@ -12,11 +12,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 document.querySelector('.wrapper').addEventListener('click', (e) => {
   if (e.target.id === 'submit') {
-    const input = document.querySelector('.top input')
-    const [value] = input.value
-    if (!value) return
-    addStorage(value)
-    addTodo(value)
+    const inputVal = document.querySelector('.top input').value
+    if (!inputVal) return
+    addStorage(inputVal)
+    addTodo(inputVal)
     return
   }
   if (e.target.className === 'delete') { // 刪除 todo list
