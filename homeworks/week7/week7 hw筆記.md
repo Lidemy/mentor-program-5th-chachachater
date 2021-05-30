@@ -30,7 +30,7 @@ for (each of requiredArr) {
 }
 ```
 
-### 其他
+### Notion
 
 * email, phone-number 可以用 `type="email/number"` 來做檢查
 * JS 程式碼的 `const number = each.querySelector('input[type="number"]')`，如果改成`const number = each.querySelectorAll('input[type="number"]')`的話，會抓到兩個NodeLIST，這個原因還不清楚是為什麼
@@ -60,7 +60,7 @@ if (element) {
 ### 小心網頁安全
 > 例如使用者在 inputbox 輸入`<h1>123</h1>`，有可能被錯誤讀取成 node
 
-[escape html](https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript)
+[可以使用 escape html 來解決](https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript)
 
 ### `.appendChild()` 可能是複製、可能是搬移
 
@@ -98,6 +98,15 @@ local storage 存放的都是字串 string，所以在這邊使用 JSON 格式�
 
 用 JSON 做處裡真的滿方便的，像是 todoList 重新整理之後，它會依照新增會刪除的順序自動排列，排序方式例如圖片表示（新增順序是 0,1,2,3,4,5,6），但缺點就是不會按照使用者刪除的先後順序來做排列Q_Q
 ![](https://i.imgur.com/eJpvjSP.png)
+
+### Notion
+
+作業的 JS 裡面第15行，的寫法是`const inputVal = document.querySelector('.top input').value`，
+原本使用下方的寫法，但會造成只能取出第一個輸入字元的問題
+```javascript=
+const input = document.querySelector('.top input')
+const inputVal = input.value
+```
 
 ## 其他
 ```javascript=
