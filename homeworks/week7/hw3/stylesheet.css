@@ -42,7 +42,7 @@ h1 {
   color: #F6F8F8;
 }
 
-.input {
+.input-block {
   margin: 10px auto;
   display: flex;
   justify-content: center;
@@ -50,7 +50,7 @@ h1 {
   flex-wrap: wrap;
 }
 
-.input input {
+.input-block input {
   width: 80%;
 }
 
