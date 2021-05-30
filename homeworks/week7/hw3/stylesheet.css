@@ -59,7 +59,7 @@ h1 {
   font-size: 2rem;
 }
 
-.single {
+.todo {
   display: flex;
   align-items: center;
   margin: 20px auto;
@@ -67,13 +67,13 @@ h1 {
   border-bottom: solid 1px #155B92;
 }
 
-.single p {
+.todo p {
   flex-grow: 1;
   background: #F6F8F8;
   margin-right: 10px;
   word-break: break-word; /* 避免爆框 */
 }
 
-.del {
+.strikethrough {
   text-decoration: line-through;
 }
