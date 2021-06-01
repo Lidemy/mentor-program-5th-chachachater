@@ -1,5 +1,7 @@
 # week8 hw筆記
 
+[好讀版](https://hackmd.io/@ouR5x-oVSMy4d8R5uFsKNg/Hkt9ygnOO)
+
 ## hw1
 
 ### API error 處理
@@ -43,6 +45,22 @@ try {
 * `alertError(reasonStr, statuscode)`: 發生錯誤時，用alert來跳出提醒視窗
 
 * `appendNav(gameArr, callback)`: 給 navbar 加上監聽器&動態新增實況影片，其他函式(`appendGames(game)`、`appendStreams(json)`)也是同理
+
+### 點選 navbar 的不同遊戲時，選單會維持黑底的功能
+
+```javascript=
+for (let i = 0; i < gameArr.length; i++) {
+  const navRightLi = document.querySelector(`.nav-right li:nth-child(${i + 1})`)
+  navRightLi.addEventListener('click', (e) => {
+    callback(gameArr[i])
+    document.querySelector('.active').classList.remove('active') // 點選 nav 的遊戲之後, 顏色會變黑底
+    e.target.classList.add('active')
+  })
+}
+```
+
+![](https://i.imgur.com/0LEVdey.gif)
+
 
 ### XMLHttpRequest
 
@@ -111,3 +129,5 @@ status 的值一定會返回運行這些步驟的結果：
 * error404 頁面
 * 影片跟 YT 一樣會自己動
 * 載入更多實況影片
+* 固定在選重的欄位
+* 
