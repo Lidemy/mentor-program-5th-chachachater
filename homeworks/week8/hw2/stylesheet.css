@@ -47,6 +47,11 @@ nav .nav-right {
   margin: 5px;
 }
 
+nav .active {
+  background-color: #1b1b1b;
+  color: white;
+}
+
 .nav-right li:hover {
   background-color: #666666;
   color: white;

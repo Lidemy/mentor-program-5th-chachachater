@@ -83,7 +83,7 @@ function alertError(reasonStr, statuscode) { // 處理 statuscode 錯誤的情�
 function appendNav(gameArr, callback) {
   const navRight = document.querySelector('.nav-right')
   navRight.innerHTML = `
-      <li>${gameArr[0]}</li>
+      <li  class="active">${gameArr[0]}</li>
       <li>${gameArr[1]}</li>
       <li>${gameArr[2]}</li>
       <li>${gameArr[3]}</li>
@@ -93,6 +93,8 @@ function appendNav(gameArr, callback) {
     const navRightLi = document.querySelector(`.nav-right li:nth-child(${i + 1})`)
     navRightLi.addEventListener('click', (e) => {
       callback(gameArr[i])
+      document.querySelector('.active').classList.remove('active') // 點選 nav 的遊戲之後, 顏色會變黑底
+      e.target.classList.add('active')
     })
   }
 }
