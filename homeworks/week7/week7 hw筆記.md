@@ -1,4 +1,5 @@
 # week7 hw筆記
+> 一些可以再改善的地方，enter 後跳入下個欄位(google表單)，alert 顯示內容作排版(google 表單)
 
 [好讀版](https://hackmd.io/@ouR5x-oVSMy4d8R5uFsKNg/H1vLu9IKO)
 
@@ -28,12 +29,17 @@ for (each of requiredArr) {
 //   以下略
 }
 ```
+
+### Notion
+
+* email, phone-number 可以用 `type="email/number"` 來做檢查
+* JS 程式碼的 `const number = each.querySelector('input[type="number"]')`，如果改成`const number = each.querySelectorAll('input[type="number"]')`的話，會抓到兩個NodeLIST，這個原因還不清楚是為什麼
+
 ### 幾種不顯示 HTML 標籤的方法
 
 ```css=
 visibility: hidden;
 opacity: 0;
-display: hide;
 display: none;
 overflow: hidden
 ```
@@ -54,7 +60,7 @@ if (element) {
 ### 小心網頁安全
 > 例如使用者在 inputbox 輸入`<h1>123</h1>`，有可能被錯誤讀取成 node
 
-[escape html](https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript)
+[可以使用 escape html 來解決](https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript)
 
 ### `.appendChild()` 可能是複製、可能是搬移
 
@@ -68,19 +74,39 @@ if (element) {
 
 local storage 存放的都是字串 string，所以在這邊使用 JSON 格式來存放 list 內容，存放的格式是這樣：
 ```json=
-{
-"1":['hi', false],
-"2":['ff14', false],
-"3":['wow', true],
-...
+[
+  {
+    "id":0,
+    "todo": "寫作業",
+    "isFinished": false
+  },
+  {
+  "id":1,
+  "todo": "看影片",
+  "isFinished": false
 }
+...
+]
 ```
-* key 表示 list lindex，key 一定是遞增的(額外用變數 "count, lastList" 來記錄)
-* false/true 表示有沒有加上刪除線和打勾
+* id 一定是遞增的、唯一的(額外用變數 "count, lastList" 來記錄累計新增了幾筆資料)，例如：累計新增了 5 筆資料，
+![](https://i.imgur.com/Pjbz7l0.png)
+把第 `id=4`刪掉再新增一筆`todo=喝水`資料之後，id 會從5開始記錄
+![](https://i.imgur.com/sBK9CW0.png)
+
+* isFinished 表示有沒有加上刪除線和打勾
 * 每次 list 內容有變動(加上刪除線、刪除)，都重新讀取 local storage，對 local storage 做完變動之後再存放回去
 
-用 JSON 做處裡真的滿方便的，像是 todoList 重新整理之後，它會依照新增會刪除的順序自動排列，排序方式例如圖片表示（新增順序是 0,1,2,3,4,5,6）
+用 JSON 做處裡真的滿方便的，像是 todoList 重新整理之後，它會依照新增會刪除的順序自動排列，排序方式例如圖片表示（新增順序是 0,1,2,3,4,5,6），但缺點就是不會按照使用者刪除的先後順序來做排列Q_Q
 ![](https://i.imgur.com/eJpvjSP.png)
+
+### Notion
+
+作業的 JS 裡面第15行，的寫法是`const inputVal = document.querySelector('.top input').value`，
+原本使用下方的寫法，但會造成只能取出第一個輸入字元的問題
+```javascript=
+const input = document.querySelector('.top input')
+const inputVal = input.value
+```
 
 ## 其他
 ```javascript=

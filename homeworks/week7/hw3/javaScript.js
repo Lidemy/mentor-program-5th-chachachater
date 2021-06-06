@@ -1,107 +1,114 @@
-let count = 0
+let count = 0 // 紀錄累計新增的 todo 數量, 作為 todo id
 
 document.addEventListener('DOMContentLoaded', (e) => {
   if (localStorage.getItem('lastList')) {
     count = localStorage.getItem('lastList')
     readStorage()
   } else {
-    localStorage.setItem('todoList', '{}')
+    localStorage.setItem('todoList', '[]')
     localStorage.setItem('lastList', '')
   }
 })
 
 document.querySelector('.wrapper').addEventListener('click', (e) => {
   if (e.target.id === 'submit') {
-    const input = document.querySelector('.top input')
-    const [value] = input.value
-    if (!(value)) return
-    addList(value)
-    addStorage(value)
+    const inputVal = document.querySelector('.top input').value
+    if (!inputVal) return
+    addStorage(inputVal)
+    addTodo(inputVal)
     return
   }
-
-  // 刪除 todo list
-  if (e.target.className === 'delete') {
+  if (e.target.className === 'delete') { // 刪除 todo list
     e.target.parentElement.remove()
-    delSingleList(e.target.parentElement.querySelector('p').innerText)
+    const todoId = e.target.parentElement.querySelector('p').dataset.id
+    delStorage(Number(todoId))
     return
   }
-
-  // 對 todo list 加上刪除線
-  if (e.target.type === 'checkbox') {
+  if (e.target.type === 'checkbox') { // 對 todo list 加上刪除線
+    const p = e.target.parentElement.querySelector('p')
+    p.classList.toggle('strikethrough')
+    const list = document.querySelector('.list')
     if (e.target.checked) {
-      const del = e.target.parentElement.querySelector('p')
-      del.classList.toggle('del')
-      const list = document.querySelector('.list')
       list.append(e.target.parentElement) // 把打勾的 list 放到最後面
-      listBreakStorage(del.innerText, true)
+      strikethroughStorage(Number(p.dataset.id), true)
     } else {
-      const del = e.target.parentElement.querySelector('p')
-      del.classList.toggle('del')
-      const list = document.querySelector('.list')
       list.prepend(e.target.parentElement) // 把取消打勾的 list 放到最前面
-      listBreakStorage(del.innerText, false)
+      strikethroughStorage(Number(p.dataset.id), false)
     }
   }
 })
 
 function readStorage() {
   const json = JSON.parse(localStorage.getItem('todoList'))
-  for (const key in json) {
-    if (json[key][1]) { // 預設加上刪除線和打勾、放在 list 最後面
-      const list = document.querySelector('.list')
-      const createDiv = document.createElement('div')
-      createDiv.classList.add('single')
-      createDiv.innerHTML = `
+  json.forEach((each) => {
+    const list = document.querySelector('.list')
+    const div = document.createElement('div')
+    div.classList.add('todo')
+    if (each.isFinished === true) { // 預設加上刪除線和打勾、放在 list 最後面
+      div.innerHTML = `
         <input type="checkbox" checked>
-        <p class="del">${escapeHtml(json[key][0])}</p>
+        <p class="strikethrough" data-id='${each.id}'>${escapeHtml(each.todo)}</p>
         <button class="delete">delete</button>
       `
-      list.append(createDiv)
+      list.append(div)
     } else { // 預設沒有加上刪除線、沒有打勾
-      addList(json[key][0])
+      div.innerHTML = `
+        <input type="checkbox">
+        <p data-id='${each.id}'>${escapeHtml(each.todo)}</p>
+        <button class="delete">delete</button>
+       `
+      list.prepend(div) // 最新新增的 todo 會放在最前面
     }
-  }
+  })
 }
 
-function addList(value) {
+function addTodo(value) {
   const list = document.querySelector('.list')
-  const createDiv = document.createElement('div')
-  createDiv.classList.add('single')
-  createDiv.innerHTML = `
+  const div = document.createElement('div')
+  div.classList.add('todo')
+  div.innerHTML = `
     <input type="checkbox">
-    <p>${escapeHtml(value)}</p>
+    <p data-id='${count}'>${escapeHtml(value)}</p>
     <button class="delete">delete</button>
   `
-  list.prepend(createDiv)
+  list.prepend(div) // 最新新增的 todo 會放在最前面
 }
 
 function addStorage(value) {
   count++
   const json = JSON.parse(localStorage.getItem('todoList'))
-  json[`${count}`] = [escapeHtml(value), false]
+  const obj = {}
+  obj.id = count
+  obj.todo = escapeHtml(value)
+  obj.isFinished = false
+  json.push(obj)
   localStorage.setItem('todoList', JSON.stringify(json))
   localStorage.setItem('lastList', count)
 }
 
-function delSingleList(value) {
+function delStorage(id) {
   const json = JSON.parse(localStorage.getItem('todoList'))
-  for (const key in json) {
-    if (json[key][0] === value) {
-      delete json[key]
-      localStorage.setItem('todoList', JSON.stringify(json))
+  const newJson = json.filter((each) => {
+    if (each.id !== id) {
+      return each
+    } else {
+      return null
     }
-  }
+  })
+  localStorage.setItem('todoList', JSON.stringify(newJson))
 }
 
-function listBreakStorage(value, boolean) {
+function strikethroughStorage(id, boolean) {
   const json = JSON.parse(localStorage.getItem('todoList'))
-  for (const key in json) {
-    if (json[key][0] === value) {
-      json[key][1] = boolean
+  const newJson = json.map((each) => {
+    if (each.id === id) {
+      each.isFinished = boolean
+      return each
+    } else {
+      return each
     }
-  }
-  localStorage.setItem('todoList', JSON.stringify(json))
+  })
+  localStorage.setItem('todoList', JSON.stringify(newJson))
 }
 
 function escapeHtml(unsafe) {
