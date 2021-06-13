@@ -1,0 +1,270 @@
+.debug *, .debug {
+  outline: 1px solid gold;
+}
+
+html *{
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #040A1B;
+}
+
+form[action="handle_register.php"] * {
+  text-align: center;
+  margin: auto;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+html, body, h1, p, input, label {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #335495;
+  text-decoration: none; /* no underline */
+  display: inline-block;
+  font-size: 0.8rem;
+}
+
+.user button,
+.nickname input[type="submit"],
+.comment input[type="submit"] {
+  font-size: 0.8rem;
+}
+
+.warning {
+  background: rgb(255, 197, 200);
+}
+
+.warning p {
+  color:  rgb(169, 29, 34);
+  font-weight: bold;
+  font-size: 0.7rem;
+  text-align: center;
+
+  padding: 5px;
+}
+
+.container {
+  width: 90%;
+  margin: 10px auto;
+}
+
+.user {
+  background: #335495;
+  border-radius: 5px;
+  position: relative;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.user .avatar {
+  background: gainsboro;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.user h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #FEFEFE;
+}
+
+.user .sign {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+
+  background: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.user .login {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  margin: 5px;
+
+  background: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.user .logout {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  margin: 5px;
+
+  background: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+
+.edit,
+label,
+input {
+  display: block;
+  margin: auto;
+}
+
+.nickname label, .comment label {
+  font-size: 1rem;
+  text-align: center;
+  color: #FEFEFE;
+  padding: 10px 0 5px 0;
+}
+
+.nickname input[id="nickname"] {
+  width: 10rem;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px auto;
+}
+
+.comment input[id="nickname"] {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.comment input[id="username"] {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.comment input[id="content"] {
+  width: 90%;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.comment input[id="password"] {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.comment textarea {
+  resize: vertical;
+  display: block;
+  margin: 10px auto;
+  border-radius: 5px;
+  width: 80%;
+}
+
+.edit,
+.nickname input[type="submit"],
+.comment input[type="submit"] {
+  background: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.comment-list {
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.comment-list .comment-title {
+  border-bottom: 1px solid #335495;
+  font-size: 1.5rem;
+  color: #335495;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.singe-comment {
+  border-bottom: 1px solid gray;
+  display: flex;
+}
+
+.singe-comment .avatar {
+  background: gainsboro;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin: 10px 0 0 0;
+/* 讓 avatar 圖片大小在 flex 之下固定 */
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.singe-comment .username {
+  padding: 10px 10px 0 10px;
+  line-height: 1rem;
+}
+
+.singe-comment .content {
+  color: #040A1B;
+  padding: 10px;
+  white-space: pre-line;
+  word-break: break-word;
+  line-height: 1rem;
+}
+
+.list-end {
+  text-align: center;
+  padding: 10px 0 0px 0;
+  color: #335495;
+  font-weight: bold;
+}
+
+.topBtn {
+  position: fixed;
+  top: 85%;
+  right: 5%;
+  width: 40px;
+  height: 40px;
+  background: black;
+  opacity: 0.5;
+  color: white;
+  border-radius: 50%;
+  border: none;
+}
+
+.invalid {
+  font-size: 16px;
+  color: gold;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.hide {
+  display: none;
+}
+
+@media(min-width: 568px) {
+  .list-end {
+    font-size: 0.8rem;
+  }
+}
+
+@media(min-width: 1200px) {
+  .container {
+    width: 70%;
+    margin: 10px auto;
+  }
+
+  .list-end {
+    font-size: 1rem;
+  }
+}
