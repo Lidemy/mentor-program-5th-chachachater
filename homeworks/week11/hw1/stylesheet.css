@@ -1,0 +1,413 @@
+.debug *, .debug {
+  outline: 1px solid gold;
+}
+
+html *{
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #040A1B;
+}
+
+form[action="handle_register.php"] * {
+  text-align: center;
+  margin: auto;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+html, body, h1, p, input, label {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #335495;
+  text-decoration: none; /* no underline */
+  display: inline-block;
+  font-size: 0.8rem;
+}
+
+.user-block button,
+.nickname-block input[type="submit"],
+.input-block input[type="submit"] {
+  font-size: 0.8rem;
+}
+
+.warning {
+  background: rgb(255, 197, 200);
+}
+
+.warning p {
+  color:  rgb(169, 29, 34);
+  font-weight: bold;
+  font-size: 0.7rem;
+  text-align: center;
+
+  padding: 5px;
+}
+
+.container {
+  width: 90%;
+  margin: 10px auto;
+}
+
+.user-block {
+  background: #335495;
+  border-radius: 5px;
+  position: relative;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.user-block .avatar {
+  background: gainsboro;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.user-block h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #FEFEFE;
+}
+
+.user-block .sign-btn,
+.user-block .index-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+
+  background: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.user-block .login-btn {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  margin: 5px;
+
+  background: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.user-block .logout-btn {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  margin: 5px;
+
+  background: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.user-block .manage-btn {
+  position: absolute;
+  top: 70px;
+  right: 0;
+  margin: 5px;
+
+  background: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+
+.edit-btn,
+label,
+input {
+  display: block;
+  margin: auto;
+}
+
+.nickname-block label, .input-block label {
+  font-size: 1rem;
+  text-align: center;
+  color: #FEFEFE;
+  padding: 10px 0 5px 0;
+}
+
+.nickname-block input[id="nickname"] {
+  width: 10rem;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px auto;
+  line-height: 1rem;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+}
+
+.input-block input[id="nickname"] {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.input-block input[id="username"] {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.input-block input[id="content"] {
+  width: 90%;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.input-block input[id="password"] {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.input-block textarea {
+  resize: vertical;
+  display: block;
+  margin: 10px auto;
+  border-radius: 5px;
+  width: 80%;
+  line-height: 1rem;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+}
+
+.edit-btn,
+.nickname-block input[type="submit"],
+.input-block input[type="submit"] {
+  background: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.title-block {
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.title {
+  border-bottom: 1px solid #335495;
+  font-size: 1.5rem;
+  color: #335495;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.comment-block {
+  border-bottom: 1px solid gray;
+  display: flex;
+}
+
+.comment-block .avatar {
+  background: gainsboro;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin: 10px 0 0 0;
+/* 讓 avatar 圖片大小在 flex 之下固定 */
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.comment-block .username {
+  padding: 10px 10px 0 10px;
+  line-height: 1rem;
+}
+
+.comment-block .content {
+  color: #040A1B;
+  padding: 10px;
+  white-space: pre-line;
+  word-break: break-word;
+  line-height: 1rem;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+}
+
+.page-block {
+  text-align: center;
+  padding: 10px 0 0px 0;
+  color: #335495;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.page-total {
+  color: #335495;
+  font-size: 0.8rem;
+  margin: 0 0 10px 0;
+}
+
+.topBtn {
+  position: fixed;
+  top: 85%;
+  right: 5%;
+  width: 40px;
+  height: 40px;
+  background: black;
+  opacity: 0.5;
+  color: white;
+  border-radius: 50%;
+  border: none;
+}
+
+.invalid {
+  font-size: 16px;
+  color: gold;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.hide {
+  display: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.role-block {
+  display: flex;
+  border-bottom: 1px solid #335495;
+  text-align: center;
+}
+
+.role-block div {
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+}
+
+.role-block > :nth-child(1) {
+  box-sizing: border-box;
+  width: 80px;
+  flex-shrink: 0;
+  padding: 20px 0;
+}
+
+.role-block > :nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.role-details :nth-child(1) {
+  box-sizing: border-box;
+  width: 90px;
+  flex-shrink: 0;
+  padding: 20px 0;
+}
+
+.role-details :nth-child(2),
+.role-details :nth-child(3) {
+  flex-shrink: 1;
+  flex-grow: 1;
+  background: #335495;
+  color: white;
+  padding: 20px 0;
+}
+
+.role-details :nth-child(2) {
+  border-right: 1px solid white;
+}
+
+.role-details :nth-child(4) {
+  box-sizing: border-box;
+  width: 30px;
+  margin: 0;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.permission-block {
+  display: flex;
+  padding: 20px 0;
+  border-bottom: 1px solid gray;
+}
+
+.permission-block > :nth-child(1) {
+  box-sizing: border-box;
+  width: 80px;
+  flex-shrink: 0;
+  align-self: center;
+  text-align: center;
+  white-space: pre-line;
+  word-break: break-word;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+}
+
+.permission-block > :nth-child(2) {
+  display: flex;
+  flex-grow: 1;
+}
+
+.permission-form > select,
+select option {
+  box-sizing: border-box;
+  width: 90px;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+}
+
+.permission-form input[type="submit"] {
+  box-sizing: border-box;
+  width: 30px;
+  margin: 0;
+  flex-shrink: 0;
+  flex-grow: 0;
+
+  border: none;
+
+  border-radius: 10px;
+  background: #1d37a8;
+  color: white;
+}
+
+.permission-form div {
+  display: inline-block;
+  margin: 0;
+  padding-right: 20px;
+  vertical-align: text-bottom;
+  font-size: 0.8rem;
+}
+
+.permission-form input[type="radio"] {
+  display: inline-block;
+}
+
+
+@media(min-width: 568px) {
+  .page-block {
+    font-size: 0.8rem;
+  }
+}
+
+@media(min-width: 1200px) {
+  .container {
+    width: 70%;
+    margin: 10px auto;
+  }
+
+  .page-block {
+    font-size: 1rem;
+  }
+}
