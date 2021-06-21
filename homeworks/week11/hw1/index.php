@@ -105,7 +105,7 @@
           <input type="submit" value="提交">
           <?php } else { 
                     if($my_username) { ?>
-                      <p class="invalid">目前身分為: <?php echo $role;?>，無法新增留言</p>
+                      <p class="invalid">目前身分為: <?php echo escape($role);?>，無法新增留言</p>
                     <?php } else { ?>
                       <p class="invalid">請登入或註冊後再留言</p>
                     <?php } ?>

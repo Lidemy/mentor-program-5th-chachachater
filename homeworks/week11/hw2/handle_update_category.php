@@ -25,11 +25,5 @@
   if(!$result) {
     die($connection->error);
   }
+  header('Location: ./admin_category.php');
 ?>
-
-<script>
-  goBack(-2)
-  function goBack(page) {
-    window.history.go(page);
-  }
-</script>

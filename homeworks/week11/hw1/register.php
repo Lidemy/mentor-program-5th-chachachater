@@ -1,10 +1,12 @@
 <?php
   require_once('connection.php');
 
-  $result = $connection->query('SELECT * FROM `selena_message_board_messages`;');
+  $stmt = $connection->prepare('SELECT * FROM `selena_message_board_messages`;');
+  $result = $stmt->execute();
   if (!$result) {
     die($connection->error);
   }
+  $result = $stmt->get_result();
 
   $invalid = null;
   if(isset($_GET['invalid'])) {
