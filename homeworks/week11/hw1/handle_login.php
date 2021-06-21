@@ -26,6 +26,7 @@
   if(password_verify($password, $row['password'])){
     $_SESSION['username'] = $username; // 設定 COOKIE
     header('Location: index.php');
+    exit();
   } else {
     header('Location: login.php?errCode=5'); // 5 登入時，帳號或密碼錯誤
     exit();

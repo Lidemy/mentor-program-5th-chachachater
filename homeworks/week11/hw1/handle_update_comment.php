@@ -14,7 +14,6 @@
 
   $role = get_role($username);
 
-
   if(has_permission($role, 'edit')) {
     edit_comment($id, null, $content);
   } else {

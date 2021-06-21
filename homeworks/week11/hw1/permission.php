@@ -89,9 +89,9 @@
         } ?>
 
       <div class="permission-block">
-        <p class="username"><?php echo $username; ?></p>
+        <p class="username"><?php echo escape($username); ?></p>
         <form class="permission-form" action="handle_permission.php" method="POST">
-          <input class="hide" name="username" value="<?php echo $username; ?>">
+          <input class="hide" name="username" value="<?php echo escape($username); ?>">
           <select name="role">
             <option value="admin" <?php if($role === 'admin') {echo 'selected="selected"';}?>>admin</option>
             <option value="user" <?php if($role === 'user') {echo 'selected="selected"';}?>>user</option>

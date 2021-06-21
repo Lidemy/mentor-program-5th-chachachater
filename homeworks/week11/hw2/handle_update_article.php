@@ -34,10 +34,3 @@
   }
   header('Location: ./admin_article.php');
 ?>
-
-<script>
-  goBack(-2)
-  function goBack(page) {
-    window.history.go(page);
-  }
-</script>
