@@ -5,13 +5,12 @@ const limit = 5
 getComments(siteKey, null, limit)
 
 $('.comment-form').on('submit', (e) => {
-  // e.preventDefault()
-  const newComment = {
-    site_key: siteKey,
-    nickname: $('input').val(),
-    content: $('textarea').val()
+  e.preventDefault()
+  if ($('input').val() === '' || $('textarea').val() === '') {
+    alert('請勿輸入空的暱稱或內容')
+    return
   }
-  sendComment(newComment)
+  $('.comment-form button').fadeOut(sendComment)
 })
 
 $('.load-block button').on('click', (e) => {
@@ -66,12 +65,21 @@ function appendCard(each) {
   )
 }
 
-function sendComment(newComment) {
+function sendComment() {
+  const newComment = {
+    site_key: siteKey,
+    nickname: $('.comment-form input').val(),
+    content: $('.comment-form textarea').val()
+  }
+
   $.ajax({
     method: 'POST',
     url: 'http://mentor-program.co/mtr04group3/Selena/week12/hw1/api_handle_add_comment.php',
     data: newComment
   })
+    .done((data) => {
+      location.reload()
+    })
     .fail((msg) => {
       alert('Oops... something went wrong, please check your console')
       console.log('status code: ', msg.status)
