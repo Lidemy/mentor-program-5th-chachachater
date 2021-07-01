@@ -20,38 +20,42 @@ const init = {
 }
 let offset = 20
 
-getTopGame(init)
+run()
 
-window.addEventListener('scroll', (e) => {
+window.addEventListener('scroll', async(e) => {
   if (checkSrollBottom()) {
-    getStreams(init, topGameArr[0], 5, offset, false)
+    const data = await getStreams(init, topGameArr[0], 5, offset, false)
+    const resolve = await appendStreams(data, false)
+    console.log(resolve)
+    removeLoader()
     offset += 5
   }
 })
 
 async function getTopGame(init) {
   const url = `${baseUrl}/games/top?limit=5`
-  fetch(url, init)
-    .then((response) => response.json())
-    .then((data) => {
-      for (const each of data.top) {
-        topGameArr.push(each.game.name)
-      }
-      appendGames(topGameArr[0])
-      getStreams(init, topGameArr[0])
-      appendNav(init, topGameArr)
-    })
+  const response = await fetch(url, init)
+  const data = await response.json()
+  for (const each of data.top) {
+    topGameArr.push(each.game.name)
+  }
 }
 
-function getStreams(init, game, limit = 20, offset = 0, boolean) {
+async function run() {
+  await getTopGame(init)
+  appendGames(topGameArr[0])
+  appendNav(init, topGameArr)
+  const data = await getStreams(init, topGameArr[0])
+  const resolve = await appendStreams(data, true)
+  console.log(resolve)
+  removeLoader()
+}
+
+async function getStreams(init, game, limit = 20, offset = 0, boolean) {
   const url = `${baseUrl}/streams/?game=${game}&limit=${limit}&offset=${offset}`
-  fetch(url, init)
-    .then((response) => response.json())
-    .then((data) => appendStreamsPromise(data, boolean))
-    .then((resolve) => {
-      removeLoader()
-      console.log(resolve)
-    })
+  const response = await fetch(url, init)
+  const data = await response.json()
+  return data
 }
 
 function appendNav(init, gameArr) {
@@ -67,11 +71,14 @@ function appendNav(init, gameArr) {
     }
 
     const navRightLi = document.querySelector(`.nav-right li:nth-child(${i + 1})`)
-    navRightLi.addEventListener('click', (e) => {
+    navRightLi.addEventListener('click', async(e) => {
       addLoader()
       document.documentElement.scrollTop = 0
       appendGames(gameArr[i])
-      getStreams(init, gameArr[i])
+      const data = await getStreams(init, topGameArr[i])
+      const resolve = await appendStreams(data, true)
+      console.log(resolve)
+      removeLoader()
       document.querySelector('.active').classList.remove('active') // 點選 nav 的遊戲之後, 顏色會變黑底
       e.target.classList.add('active')
     })
@@ -83,7 +90,7 @@ function appendGames(game) {
   title.innerText = `${game}`
 }
 
-function appendStreamsPromise(json, clearStreams = true) {
+function appendStreams(json, clearStreams = true) {
   const streams = document.querySelector('.streams')
   if (clearStreams) streams.innerHTML = '' // 點選別的遊戲之後，原本的內容要清空再載入別的遊戲的實況
   for (const each of json.streams) {
