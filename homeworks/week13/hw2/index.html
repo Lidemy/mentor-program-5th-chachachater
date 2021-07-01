@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="./normalize.css" />
+    <title>Message-Board</title>
+  </head>
+  <body>
+    <div class="container-block1">
+    </div>
+    <div class="container-block2">
+    </div>
+    <script src="./main.js"></script>
+    <script>
+      commentPlugin.init({
+        siteKey: 'b',
+        apiUrl: 'https://www.MessageBoard.Umer.tw',
+        limit: 3,
+        containerElement: '.container-block1'
+      })
+
+      commentPlugin.init({
+        siteKey: 'test',
+        apiUrl: 'https://www.MessageBoard.Umer.tw',
+        limit: 2,
+        containerElement: '.container-block2'
+      })
+    </script>
+  </body>
+</html>

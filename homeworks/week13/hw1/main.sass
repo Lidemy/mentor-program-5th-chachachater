@@ -1,0 +1,204 @@
+@import _variables
+@import _components
+@import _layouts
+
+.user-block
+  *
+    display: block
+    margin: auto
+
+.user-block
+  @extend %absolute-center
+  border: $border solid $color-primary
+  width: 70%
+  height: 90%
+
+.user-block
+  h1
+    text-align: center
+    font-size: 2rem
+    margin: 73px auto 61px auto
+
+.user-block label,
+.user-block input
+  width: 80%
+
+.user-block label
+  font-size: 0.9rem
+  padding-left: 21px
+
+.user-block input
+  box-sizing: border-box
+  margin: 16px auto 23px auto
+  height: 40px
+
+.user-block input[type="submit"]
+  box-sizing: border-box
+  height: 56px
+  font-size: 1rem
+  background-image: linear-gradient(to top, #000000, #434343)
+  margin-top: 67px
+  color: $color-secondary
+
+.article
+  border: 1px solid $color-border
+  padding: 28px 30px 19px 30px
+  height: fit-content
+  margin-bottom: 24px
+
+.article-title
+  display: flex
+  justify-content: space-between
+  align-items: center
+  flex-wrap: wrap
+
+.article-title
+  button
+    background: none
+    border: $border solid $color-border
+    padding: 5px 12px
+
+.info-block
+  background: $color-info-background
+  color: $color-burger
+  box-sizing: border-box
+  min-height: 40px
+  line-height: 1.5
+  padding: 13px 0 13px 0px
+  margin: 19px 0 17px 0
+  font-size: 0.9rem
+  display: flex
+  flex-wrap: wrap
+
+.info-block>span
+  vertical-align: bottom
+  padding: 0 5px 0 15px
+
+.detail-block
+  font-size: 1rem
+  line-height: 1.43rem
+  white-space: pre-line
+
+.text-hidden
+  max-height: 13.9rem
+  overflow: hidden
+  position: relative
+
+.read-block
+  font-size: 0.9rem
+  margin-top: 36px
+  border: $border solid $color-primary
+  line-height: 1.43
+  text-align: center
+  width: fit-content
+  padding: 10px 15px
+
+.page-block
+  text-align: center
+  padding: 10px 0 0px 0
+  letter-spacing: 1px
+
+.page-total
+  margin: 0 0 10px 0
+
+.about-block
+  margin: 19px 0 0 0
+  white-space: pre-line
+
+.all-article-block
+  .title
+    padding: 15px 0 15px 20px
+    border-bottom: $border solid $color-border
+
+/* admin_article.php */
+.title-block
+  border-bottom: $border solid $color-border
+  text-align: center
+
+.title-block h1
+  display: inline-block
+  padding: 10px 0
+
+.article.admin-block
+  border: none
+  border-bottom: $border solid $color-border
+  padding: 28px 30px 19px 30px
+
+.article.article.admin-block
+  padding: 45px 0 22px 38px
+
+.article-title > a
+  line-height: 1.5
+
+.admin-detail > *
+  margin-right: 8px
+
+.created-date
+  display: inline-block
+
+/* add_article.php */
+form.article-content
+  *
+    font-size: 0.9rem
+
+
+form.article-content
+  h1
+    font-size: 1.25rem
+    font-weight: normal
+
+form.article-content
+  border: 1px solid black
+
+form.article-content > *
+  display: block
+  box-sizing: border-box
+  margin: 25px auto 0 auto
+  font-size: 0.9rem
+
+
+form.article-content > *:not(h1)
+  line-height: 2
+  border: $border solid #d7d7d7
+  padding-left: 11px
+
+form.article-content
+  *:not(input[type="submit"])
+    width: 80%
+
+.category
+  height: 28px
+
+.category
+  option
+    background: $color-info-background
+    color: black
+
+form.article-content
+  select
+    background: $color-info-background
+
+textarea
+  resize: vertical
+
+form.article-content
+  input[type="submit"]
+    color: $color-input
+    padding: 5px 20px
+    border: $border solid $color-input
+    background: none
+    margin-bottom: 83px
+
+#error-block
+  text-align: center
+  border: none
+  color: $color-error
+  font-size: 1rem
+  padding: 0
+
+@media (min-width: 768px)
+  .user-block
+    @extend %absolute-center
+    border: $border solid $color-primary
+    width: 527px
+    height: 582px
