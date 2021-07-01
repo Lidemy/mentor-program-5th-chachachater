@@ -1,0 +1,273 @@
+html,
+body{
+  width:100%;
+  font-size: 12px;
+  font-family:'Questrial', 'MicrosoftJhengHei', sans-serif;
+}
+
+body,
+body *{
+  padding: 0;
+  margin: 0;
+}
+
+.loader-block div {
+  border: 12px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 12px solid #444444;
+  width: 70px;
+  height: 70px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  opacity: 0.5;
+}
+  
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader-block {
+  opacity: 0.5;
+  z-index: 1;
+  background: gray;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.wrapper-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1; /* 讓 nav 的圖層最高，防止實況影片 hover+scale() 的時候蓋住它 */
+}
+
+ul.nav-right {
+  list-style-type: none;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: whitesmoke;
+}
+
+nav .nav-left {
+  font-size: 2.5rem;
+  padding: 20px;
+  font-weight: bold;
+}
+
+nav .nav-right {
+  text-align: center;
+  font-size: 2rem;
+  justify-content: space-between;
+  display: flex;
+  margin: 5px;
+}
+
+nav .active {
+  background-color: #1b1b1b;
+  color: white;
+}
+
+.nav-right li:hover {
+  background-color: #666666;
+  color: white;
+  transition: 0.3s;
+}
+
+nav .nav-right li:active { /* :active 的層級要比 :hover 高才有效 */
+  background-color: #1b1b1b;
+  color: white;
+}
+
+.nav-right li {
+  padding: 20px;
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.nav-right li:not(:first-child) {
+  border-left: 3px solid black;
+}
+
+.wrapper {
+  background-image: url('./pictures/background.png');
+}
+
+.title {
+  text-align: center;
+  color: #f3f3f3;
+}
+
+.title h1 {
+  font-size: 5rem;
+  padding: 10px;
+}
+
+.title p {
+  font-size: 2rem;
+  padding: 10px;
+}
+
+.streams {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.single-stream {
+  width: 288px;
+  background: rgb(57,58,60);
+  margin: 10px;
+  transition: 0.5s;
+
+}
+
+.single-stream:hover {
+  transform: scale(1.05);
+  transition: 0.5s;
+  filter: brightness(1.2);
+}
+
+.preview-large {
+  height: 153px;
+  width: 288px;
+  background-size: cover;
+  margin: auto;
+}
+
+.logo {
+  height: 100px;
+  width: 100px;
+  background-size: cover;
+  border-radius: 50%;
+  
+  margin: 10px auto
+}
+
+.status {
+  padding: 10px;
+  font-size: 1.5rem;
+  color: white;
+  word-break: break-word;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.display-name {
+  font-size: 1rem;
+  padding: 10px;
+  color: white;
+
+}
+
+.stream-content {
+  text-align: center;
+}
+
+@media(min-width: 768px) {
+  .nav-right {
+    font-size: 1.5rem;
+  }
+
+  .nav-right li {
+    display: inline-block;
+  }
+  
+  .nav-right li {
+    padding: 20px;
+  }
+
+  .middle {
+    margin: auto;
+  }
+
+  .streams {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .logo {
+    height: 50px;
+    width: 50px;
+    margin: auto auto;
+  }
+
+  .container {
+    display: flex;
+  }
+
+  .status {
+    width: 215px;
+    text-align: left;
+    padding-bottom: 0px;
+  }
+
+  .display-name {
+    text-align: left;
+  }
+}
+
+@media(min-width: 1200px) {
+
+  .wrapper-nav {
+    background: whitesmoke;
+  }
+
+  nav {
+    margin: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    background: whitesmoke;
+  }
+
+  .middle {
+    width: 1220px;
+  }
+
+  .streams {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+  }
+
+  .single-stream {
+    width: 368px;
+  }
+
+  .logo {
+    height: 50px;
+    width: 50px;
+    margin: auto;
+  }
+
+
+  .preview-large {
+    height: 207px;
+    width: 368px;
+    background-size: cover;
+    margin: auto;
+  }
+
+  .container {
+    justify-content: left;
+  }
+
+  .status {
+    width: 288px;
+    font-size: 2rem;
+  }
+  .display-name {
+    font-size: 1.5rem;
+  }
+}
