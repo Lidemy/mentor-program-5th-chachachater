@@ -1,0 +1,147 @@
+%absolute-center
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+body, nav
+  display:initial  //for sticky
+
+.nav-block
+  *
+    font-size: 1rem
+    color: $color-secondary
+    text-align: center
+
+.nav-block
+  .title
+    font-size: 1.7rem
+    color: $color-primary
+    border: none
+    padding: 10px 0
+    position: sticky
+    top: 0
+    z-index: 1
+    background: $color-secondary
+
+.burger-checkbox,.burger
+  right: 0px
+
+.burger-checkbox
+  height: 32px
+  width: 32px
+  margin: 5px 5px 0 0
+  z-index: 3
+  opacity: 0
+  position: fixed
+
+.burger
+  z-index: 2
+  top: 0
+  position: fixed
+  background: #607d8bf7
+  width: 41px
+  height: 42px
+
+/* 讓漢堡選單被點選之後有出現 X 的動畫效果, 需要配合 JS */
+.change :nth-child(1)
+  transform: rotate(45deg)
+  position: relative
+  top: 11px
+
+.change :nth-child(2)
+  display: none
+
+.change :nth-child(3)
+  transform: rotate(-45deg)
+  position: relative
+  top: -1px
+
+.burger span
+  background-color: $color-secondary
+  height: 6px
+  width: 29px
+  display: block
+  margin: 6px
+  z-index: 1
+
+.burger-checkbox:checked ~ nav .burger-detail
+  top: 0%
+  transition: 0.5s
+
+.burger-detail
+  position: fixed
+  top: -100%
+  z-index: 1
+  background: $color-burger-background
+  width: 100%
+  transition: 0.5s
+
+.left-block div, .right-block div
+  padding: 10px 0
+
+.left-block a, .right-block a
+  border-bottom: $border solid $color-secondary
+
+@media(min-width: 1280px)
+  /* 取消和定位漢堡選單 */
+  .burger-checkbox
+    z-index: 0
+    opacity: 0
+    position: absolute
+
+  .burger
+    z-index: 0
+    top: 10px
+    opacity: 0
+
+  .nav-block *
+    color: $color-primary
+
+  .nav-block
+    .title
+      position: relative
+      top: 0
+      z-index: 0
+      flex-shrink: 0
+      margin: 20px 15px 20px 0
+      padding: 0
+
+  .burger-detail
+    position: relative
+    z-index: 0
+    top: 0
+    background-color: $color-secondary
+
+  nav
+    padding: 0 93px 0 93px
+
+  nav,
+  nav .burger-detail,
+  nav .left-block,
+  nav .right-block
+    display: flex
+
+  nav
+    .burger-detail
+      justify-content: space-between
+      align-items: center
+
+  .left-block a, .right-block a
+    border-bottom: none
+
+  .left-block > div:not(:last-child),
+  .right-block > div:not(:last-child)
+    padding-right: 20px
+    border-right: $border solid $color-primary
+
+  .left-block > div:not(:first-child),
+  .right-block > div:not(:first-child)
+    padding-left: 20px
+
+  .banner
+    top: 0
+
+  .container
+    top: -5%
+    position: relative
