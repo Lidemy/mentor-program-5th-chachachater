@@ -1,0 +1,469 @@
+@charset "UTF-8";
+.user-block, .banner div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nav-block * {
+  font-size: 1rem;
+  color: white;
+  text-align: center;
+}
+
+.nav-block .title {
+  font-size: 1.7rem;
+  color: black;
+  border: none;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: white;
+}
+
+.burger-checkbox, .burger {
+  right: 0px;
+}
+
+.burger-checkbox {
+  height: 32px;
+  width: 32px;
+  margin: 5px 5px 0 0;
+  z-index: 3;
+  opacity: 0;
+  position: fixed;
+}
+
+.burger {
+  z-index: 2;
+  top: 0;
+  position: fixed;
+  background: #607d8bf7;
+  width: 41px;
+  height: 42px;
+}
+
+/* 讓漢堡選單被點選之後有出現 X 的動畫效果, 需要配合 JS */
+.change :nth-child(1) {
+  transform: rotate(45deg);
+  position: relative;
+  top: 11px;
+}
+
+.change :nth-child(2) {
+  display: none;
+}
+
+.change :nth-child(3) {
+  transform: rotate(-45deg);
+  position: relative;
+  top: -1px;
+}
+
+.burger span {
+  background-color: white;
+  height: 6px;
+  width: 29px;
+  display: block;
+  margin: 6px;
+  z-index: 1;
+}
+
+.burger-checkbox:checked ~ nav .burger-detail {
+  top: 0%;
+  transition: 0.5s;
+}
+
+.burger-detail {
+  position: fixed;
+  top: -100%;
+  z-index: 1;
+  background: #607d8bf7;
+  width: 100%;
+  transition: 0.5s;
+}
+
+.left-block div, .right-block div {
+  padding: 10px 0;
+}
+
+.left-block a, .right-block a {
+  border-bottom: 1px solid white;
+}
+
+@media (min-width: 1280px) {
+  /* 取消和定位漢堡選單 */
+  .burger-checkbox {
+    z-index: 0;
+    opacity: 0;
+    position: absolute;
+  }
+
+  .burger {
+    z-index: 0;
+    top: 10px;
+    opacity: 0;
+  }
+
+  .nav-block * {
+    color: black;
+  }
+
+  .nav-block .title {
+    position: relative;
+    top: 0;
+    z-index: 0;
+    flex-shrink: 0;
+    margin: 20px 15px 20px 0;
+    padding: 0;
+  }
+
+  .burger-detail {
+    position: relative;
+    z-index: 0;
+    top: 0;
+    background-color: white;
+  }
+
+  nav {
+    padding: 0 93px 0 93px;
+  }
+
+  nav,
+nav .burger-detail,
+nav .left-block,
+nav .right-block {
+    display: flex;
+  }
+
+  nav .burger-detail {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .left-block a, .right-block a {
+    border-bottom: none;
+  }
+
+  .left-block > div:not(:last-child),
+.right-block > div:not(:last-child) {
+    padding-right: 20px;
+    border-right: 1px solid black;
+  }
+
+  .left-block > div:not(:first-child),
+.right-block > div:not(:first-child) {
+    padding-left: 20px;
+  }
+
+  .banner {
+    top: 0;
+  }
+
+  .container {
+    top: -5%;
+    position: relative;
+  }
+}
+html * {
+  font-family: "MicrosoftJhengHeiRegular", sans-serif;
+  color: black;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+html, body, h1, p, input, label {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.material-icons-outlined.md-16 {
+  font-size: 16px;
+}
+
+.container {
+  width: 85%;
+  margin: auto;
+  padding: 10px;
+}
+
+.banner {
+  background-image: linear-gradient(to top, #000000, #434343);
+  height: 40%;
+  text-align: center;
+  position: relative;
+  top: 5%;
+  z-index: -1;
+}
+
+.banner h1 {
+  font-size: 1.7rem;
+  color: white;
+  text-align: center;
+  box-sizing: border-box;
+  margin: auto auto 15px auto;
+}
+
+.banner p {
+  font-size: 0.9rem;
+  color: white;
+}
+
+footer {
+  background: #323232;
+  color: white;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 10px;
+  margin-top: 116px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 65%;
+    margin: auto;
+    background: white;
+    padding: 10px;
+  }
+}
+.user-block * {
+  display: block;
+  margin: auto;
+}
+
+.user-block {
+  border: 1px solid black;
+  width: 70%;
+  height: 90%;
+}
+
+.user-block h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 73px auto 61px auto;
+}
+
+.user-block label,
+.user-block input {
+  width: 80%;
+}
+
+.user-block label {
+  font-size: 0.9rem;
+  padding-left: 21px;
+}
+
+.user-block input {
+  box-sizing: border-box;
+  margin: 16px auto 23px auto;
+  height: 40px;
+}
+
+.user-block input[type=submit] {
+  box-sizing: border-box;
+  height: 56px;
+  font-size: 1rem;
+  background-image: linear-gradient(to top, #000000, #434343);
+  margin-top: 67px;
+  color: white;
+}
+
+.article {
+  border: 1px solid #9a9a9a;
+  padding: 28px 30px 19px 30px;
+  height: fit-content;
+  margin-bottom: 24px;
+}
+
+.article-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.article-title button {
+  background: none;
+  border: 1px solid #9a9a9a;
+  padding: 5px 12px;
+}
+
+.info-block {
+  background: #eeeeee;
+  color: #8f8f8f;
+  box-sizing: border-box;
+  min-height: 40px;
+  line-height: 1.5;
+  padding: 13px 0 13px 0px;
+  margin: 19px 0 17px 0;
+  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.info-block > span {
+  vertical-align: bottom;
+  padding: 0 5px 0 15px;
+}
+
+.detail-block {
+  font-size: 1rem;
+  line-height: 1.43rem;
+  white-space: pre-line;
+}
+
+.text-hidden {
+  max-height: 13.9rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.read-block {
+  font-size: 0.9rem;
+  margin-top: 36px;
+  border: 1px solid black;
+  line-height: 1.43;
+  text-align: center;
+  width: fit-content;
+  padding: 10px 15px;
+}
+
+.page-block {
+  text-align: center;
+  padding: 10px 0 0px 0;
+  letter-spacing: 1px;
+}
+
+.page-total {
+  margin: 0 0 10px 0;
+}
+
+.about-block {
+  margin: 19px 0 0 0;
+  white-space: pre-line;
+}
+
+.all-article-block .title {
+  padding: 15px 0 15px 20px;
+  border-bottom: 1px solid #9a9a9a;
+}
+
+/* admin_article.php */
+.title-block {
+  border-bottom: 1px solid #9a9a9a;
+  text-align: center;
+}
+
+.title-block h1 {
+  display: inline-block;
+  padding: 10px 0;
+}
+
+.article.admin-block {
+  border: none;
+  border-bottom: 1px solid #9a9a9a;
+  padding: 28px 30px 19px 30px;
+}
+
+.article.article.admin-block {
+  padding: 45px 0 22px 38px;
+}
+
+.article-title > a {
+  line-height: 1.5;
+}
+
+.admin-detail > * {
+  margin-right: 8px;
+}
+
+.created-date {
+  display: inline-block;
+}
+
+/* add_article.php */
+form.article-content * {
+  font-size: 0.9rem;
+}
+
+form.article-content h1 {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+form.article-content {
+  border: 1px solid black;
+}
+
+form.article-content > * {
+  display: block;
+  box-sizing: border-box;
+  margin: 25px auto 0 auto;
+  font-size: 0.9rem;
+}
+
+form.article-content > *:not(h1) {
+  line-height: 2;
+  border: 1px solid #d7d7d7;
+  padding-left: 11px;
+}
+
+form.article-content *:not(input[type=submit]) {
+  width: 80%;
+}
+
+.category {
+  height: 28px;
+}
+
+.category option {
+  background: #eeeeee;
+  color: black;
+}
+
+form.article-content select {
+  background: #eeeeee;
+}
+
+textarea {
+  resize: vertical;
+}
+
+form.article-content input[type=submit] {
+  color: #737373;
+  padding: 5px 20px;
+  border: 1px solid #737373;
+  background: none;
+  margin-bottom: 83px;
+}
+
+#error-block {
+  text-align: center;
+  border: none;
+  color: #FF7F50;
+  font-size: 1rem;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .user-block {
+    border: 1px solid black;
+    width: 527px;
+    height: 582px;
+  }
+}
+
+/*# sourceMappingURL=stylesheet.css.map */
