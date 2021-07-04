@@ -1,5 +1,6 @@
 # Week13 hw4：簡答題
 
+[CSS 權重計算刊誤](https://github.com/Lidemy/mentor-program-5th-chachachater/pull/18)
 [好讀版](https://hackmd.io/@ouR5x-oVSMy4d8R5uFsKNg/rkJcYy5hu)
 
 ## Webpack 是做什麼用的？可以不用它嗎？
