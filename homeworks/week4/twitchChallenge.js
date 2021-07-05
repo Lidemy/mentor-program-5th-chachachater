@@ -6,7 +6,8 @@ const dataNumber = 100
 const streamInfo = []
 let cursor = ''
 const baseUrlForStream = 'https://api.twitch.tv/helix/streams'
-const gameName = process.argv[2] // 輸入要搜尋的遊戲名稱
+// const gameName = process.argv[2] // 輸入要搜尋的遊戲名稱
+let gameName = 'Fortnite'
 
 const baseUrlForGame = 'https://api.twitch.tv/helix/games'
 
@@ -80,8 +81,8 @@ function getStreamInfo(error, response, body) {
     for (let i = 0; i < parseInfo.data.length; i++) {
       streamInfo.push(
         {
-          id = parseInfo.data[i].id,
-          gameName = parseInfo.data[i].user_name
+          id: parseInfo.data[i].id,
+          gameName: parseInfo.data[i].user_name
         }
       )
     }
