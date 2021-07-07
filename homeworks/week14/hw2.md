@@ -174,4 +174,47 @@ port 443 是 HTTPS 使用，但我當時沒有申請 SSL 憑證(要錢)，連線
 
 出現錯誤的原因是 Url 寫錯，不是 `https` 而是 `http`。
 
+### 遠端對 instance 下指令`$ sudo ufw status`，之後無法用 ssh 登入
+
+原本可以正常用 ssh 登入，但在下完指令`$ sudo ufw status`之後沒過多久，流程如下
+
+```javascript=
+ubuntu@ip-xxx-xxx-xxx-xxx:~$ sudo ufw status
+Status: inactive
+ubuntu@ip-xxx-xxx-xxx-xxx:~$ sudo ufw enable
+Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
+Firewall is active and enabled on system startup
+ubuntu@ip-xxx-xxx-xxx-xxx:~$ sudo ufw status
+Status: active
+
+To                         Action      From
+--                         ------      ----
+3306                       ALLOW       Anywhere
+443                        ALLOW       Anywhere
+3306 (v6)                  ALLOW       Anywhere (v6)
+443 (v6)                   ALLOW       Anywhere (v6)
+
+ubuntu@ip-172-31-31-62:~$ client_loop: send disconnect: Connection reset by peer
+```
+
+之後使用金鑰登入都會顯示訊息`ssh: connect to host ec2-xx-xxx-xxx-xxx.us-east-2.compute.amazonaws.com port 22: Connection timed out`。
+
+猜測是因為 port22 沒打開，但我也登入不了，所以就去 EC2 console 查看 security group，結果卻顯示有打開。
+![](https://i.imgur.com/V3pgIQi.png)
+
+去之前設定好的子網，可以連線成功，但是我 ping 這台 instance 的 ip 卻顯示`Request timed out.`，原因大概是跟 iptables(用 ufw 做設定) 的設定有關，我還不太理解。
+
+總之，現在要想辦法登入進去然後把 ufw 給關掉，不使用金鑰的又想操作 instance 的方法之一是 AWS 提供的連線方式 session manager，可以在瀏覽器上面操作 insance terminal。步驟如下。
+
+![](https://i.imgur.com/eVt1Qtt.png)
+
+進去之後選擇 Create new IAM role > Create role
+`Choose a use case` 這邊要記得選擇EC2 並且在 `Attach permissions policies` 這邊選擇  AmazonEC2RoleforSSM，其他設定就如同說明。
+
+然後去選擇使用剛剛新增的 IAM role，
+![](https://i.imgur.com/Hsa7mah.png)
+
+最後就可以連線了，
+![](https://i.imgur.com/bC8J7Iu.png)
+![](https://i.imgur.com/9PO3yBe.png)
 
