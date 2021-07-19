@@ -58,15 +58,17 @@ console.log(Dog.__proto__ === Function.prototype) // true，因為 Dog 其實就
 console.log(Function.prototype.__proto__ === Object.prototype) // true
 ```
 
-## Closure
+## Closure 與 Scope chain
 
-Closure，在一個函式裡面回傳另一個函式（還是不懂它的命名意義，它到底 closed 的點在哪...??）
+Closure，透過 `Scope chain` 和 `.[[Scope]]` 讓變數、函式等可以在 EC 之間傳遞，EC 不會消失，稱為 closed 大概是因為會沿著 scope chain 一路往上找的關係
+
+> 有關 EC 甚麼時候會消失這點我不太確定，它的生活史是：初始化 EC > 執行 EC > 結束 EC (return)。但如果這個 EC 有存在於任何一個 scopechain 裡面，它就會繼續存在，不知道這樣的理解有沒有錯誤？
 
 初始化的時候，會產生下列物件(?)，注意，是初始化，不是執行：
 * 每個 EC 都有一個 scope chain 會被建立，scope chain 的內容是 自己的 AO + 自己的`.[[Scope]]`內容
 * 函式的 EC 裡面是 AO，非函式的 EC 裡面是 VO
-* 在 EC 裡面，如果有函式被宣告，就會有額外的 `.[[Scope]]` 屬性，它的內容會跟宣告時產生的 EC 的 scopeChain 內容相同
+* 在 EC 裡面，如果有函式被宣告，就會有額外的 `.[[Scope]]` 屬性，它的內容會跟宣告它（函式）時產生的 EC 的 scopeChain 內容相同
 
 要注意的點是，宣告和執行的差異（之一）是：
-* 宣告函式 => 產生`.[[Scope]]`
-* 執行函式 => 是從`.[[Scope]]`開始尋找需要的變數、函式
+* 宣告函式 => 產生`Scope chain`
+* 執行函式 => 是從`Scope chain`開始尋找需要的變數、函式
