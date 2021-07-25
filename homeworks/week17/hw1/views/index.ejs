@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('template/head.ejs') %>
+</head>
+<body>
+  <%- include('template/navbar.ejs') %>
+  <%- include('template/banner.ejs') %>
+
+  <div class="container">
+    <div class="article-block">
+      <% articleArr.forEach( each => { %>
+        <div class="article">
+          <div class="article-title">
+            <a href="./article/<%= each.id %>">
+              <%= each.title %>
+            </a>
+            <% if(isLogin) { %>
+            <button>
+                <a href="./update_article/<%= each.id %>">
+                  編輯
+                </a>
+              </button>
+            <% } %>
+          </div>
+
+          <div class="article-content">
+            <div class="info-block">
+              <span class="material-icons-outlined md-16">
+                watch_later
+              </span>
+              <%= each.createdAt %>
+              <span class="material-icons-outlined md-16">
+                folder
+              </span>
+              <% if(each.category_id && !each.blog_category.is_deleted ) { %>
+                <!-- // 如果沒選擇文章分類，category_id 會是 0 -->
+                <%= each.blog_category.category %>
+              <% } %>
+            </div>
+            <div class="detail-block text-hidden"><!--
+              --><%= each.content %>
+            </div>
+            <div class="read-block"><a href="./article/<%= each.id %>">Read More</a></div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <%- include('template/footer.ejs') %>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

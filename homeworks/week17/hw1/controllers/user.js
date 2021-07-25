@@ -1,6 +1,7 @@
 const db = require('../models')
 const bcrypt = require('bcrypt')
-const UserDb = db.draw_api_admin
+
+const UserDb = db.blog_admin
 const saltRounds = 10
 
 const userController = {
@@ -18,6 +19,8 @@ const userController = {
     user.username = req.body.username
     user.password = req.body.password
     user.hashPassword = await bcrypt.hash(user.password, saltRounds)
+    console.log('***user***', user)
+    console.log('a')
     let data = null
     try {
       data = await UserDb.create({
@@ -30,9 +33,11 @@ const userController = {
       next()
       return
     }
+    console.log('data', data)
+    console.log('b')
     req.session.isLogin = true
     req.session.username = data.username
-    res.redirect('/index')
+    next()
     return
   },
   login: (req, res, next) => {
@@ -46,16 +51,19 @@ const userController = {
       next()
       return
     }
+    console.log('a')
     const data = await UserDb.findOne({
       where: {
         username
       }
     })
     if (!data) {
+      console.log('b')
       req.flash('errMessage', '帳號或密碼錯誤')
       next()
       return
     }
+    console.log('get data', data)
     req.session.isLogin = true
     req.session.username = data.username
     res.redirect('/index')

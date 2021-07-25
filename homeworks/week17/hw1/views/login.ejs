@@ -1,24 +1,28 @@
 <html>
   <head>
     <%- include('template/head.ejs') %>
-    <link rel="stylesheet" href="./css/stylesheet.css" />
   </head>
 
   <body>
     <div class="user-block">
-        <h1>Register</h1>
+      <h1>Log In</h1>
+      <% if(!isLogin) { %>
         <div class="comment">
-          <form action="./register" method="POST">
+          <form action="./login" method="POST">
             <label for="username">USERNAME</label>
             <input type="text" id="username" name="username" placeholder="">
             <label for="content">PASSWORD</label>
             <input type="password" id="password" name="password" placeholder="">
-            <p class="fs-6 text-center">
-              <%= errMessage %>
+            <p style="text-align: center; color: #d80000;">
+            <%= errMessage %>
             </p>
-            <input type="submit" value="Register">
+            <input type="submit" value="SIGN IN">
           </form>
         </div>
+      <% } else { %>
+          <p>你已經登錄</p>
+        <% } %>
     </div>
-  </body>
+    <script></script>
+</body>
 </html>
