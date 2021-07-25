@@ -1,0 +1,11 @@
+{
+  "name": "week17",
+  "version": "1.0.0",
+  "description": "這一週的作業繳交時需要附上底下兩個專案的網址，你可以選擇：",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

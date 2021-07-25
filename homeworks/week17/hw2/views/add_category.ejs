@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('template/head.ejs') %>
+  </head>
+  <body>
+    <%- include('template/navbar.ejs') %>
+    <%- include('template/banner.ejs') %>
+    <div class="container">
+      <form class="article-content" action="./add_category" method="POST">
+        <h1>新增分類：</h1>
+        <input type="text" name="category" placeholder="輸入分類名稱">
+        <p style="text-align: center; color: #d80000;">
+        <%= errMessage %>
+        </p>
+        <input type="submit" value="新增分類">
+      </form>
+    </div>
+    <%- include('template/footer.ejs') %>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

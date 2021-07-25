@@ -1,0 +1,27 @@
+<input class="burger-checkbox" type="checkbox" />
+<div class="burger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<nav class="nav-block">
+  <div class="title">光芒萬丈的官方網站</div>
+  <div class="burger-detail">
+    <div class="left-block">
+        <div><a href="./index">首頁</a></div>
+        <div><a href="./about">關於我</a></div>
+        <div><a href="./all_articles/1">文章列表</a></div>
+        <div><a href="#">分類專區</a></div>
+    </div>
+    <div class="right-block">
+        <% if(isLogin) { %>
+          <div><a href="./add_article">新增文章</a></div>
+          <div><a href="./admin_article/1">管理後台</a></div>
+          <div><a href="./handle_logout">登出</a></div>
+          <% } else { %>
+            <div><a href="./login">登入</a></div>
+          <% } %>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('template/head.ejs') %>
+</head>
+<body>
+  <%- include('template/navbar.ejs') %>
+  <%- include('template/banner.ejs') %>
+  <div class="container">
+    <div class="article-block">
+      <div class="article">
+        <div class="article-title">
+          <a href="./article/<%= article.id %>">
+            <%= article.title %>
+          </a>
+          <% if(isLogin) { %>
+            <button>
+              <a href="./update_article/<%= article.id %>">
+                編輯
+              </a>
+            </button>
+          <% } %>
+        </div>
+
+        <div class="article-content">
+          <div class="info-block">
+            <span class="material-icons-outlined md-16">
+              watch_later
+            </span>
+            <%= article.createdAt %>
+            <span class="material-icons-outlined md-16">
+              folder
+            </span>
+            <% if(article.category_id && !article.blog_category.is_deleted) { %>
+              <!-- // 如果沒選擇文章分類，category_id 會是 0 -->
+              <%= article.blog_category.category %>
+            <% } %>
+          </div>
+          <div class="detail-block">
+            <%= article.content %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>Copyright © 2020 Who's Blog All Rights Reserved.</footer>
+
+  <script src="./javaScript.js"></script> 
+
+</body>
+</html>

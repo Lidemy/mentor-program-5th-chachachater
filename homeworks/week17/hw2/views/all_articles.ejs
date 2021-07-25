@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('template/head.ejs') %>
+  </head>
+  <body>
+    <%- include('template/navbar.ejs') %>
+    <%- include('template/banner.ejs') %>
+    <div class="container">
+      <div class="all-article-block">
+        <% articleArr.forEach( each => { %>
+          <div class="title">
+            <a href="./article/<%= each.id %>">
+              <%= each.title %>
+            </a>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+
+      <div class="page-block">
+        <div class="page-total">總共<%= articleAmount %>筆文章，現在在第<%= page %>頁</div>
+        <% if(page != 1) { %>
+          <a href="./all_articles/1">首頁</a>
+          <a href="./all_articles/<%= page - 1 %>">上一頁</a>
+        <% } %>
+        <% if(page != pageAmount) { %>
+          <a href="./all_articles/<%= page + 1 %>">下一頁</a>
+          <a href="./all_articles/<%= pageAmount %>">最後一頁</a>
+        <% } %>
+      </div>
+    </div>
+    <%- include('template/footer.ejs') %>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
