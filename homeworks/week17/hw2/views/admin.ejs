@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('./template/head.ejs') %>
+  </head>
+  <body>
+    <%- include('./template/header.ejs')%>
+    <main>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+
+          <div class="row py-lg-3">
+            <div class="col-lg-6 col-md-8 mx-auto">
+              <h1 class="fw-light text-center">所有抽獎項目</h1>
+            </div>
+          </div>
+
+          <p>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              新增抽獎項目
+            </button>
+            <% if(errMessage.length) { %>
+              <button type="button" class="btn btn-danger disabled"><%= errMessage %></button>
+            <%  } %>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <form action="./add_prize" method="POST">
+              <div class="row justify-content-between">
+                <div class="col-8">
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Name</label>
+                    <input name="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Description</label>
+                    <input name="description" type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Photo link</label>
+                    <input name="photo_link" type="url" class="form-control" id="exampleFormControlInput1" placeholder="https://example.com">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Weight</label>
+                    <input name="weight" type="number" class="form-control" id="exampleFormControlInput1" placeholder="請輸入整數">
+                  </div>
+                  <div class="mb-3">
+                    <button type="submit" class="btn btn-outline-primary mx-auto my-auto">新增獎項</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="detail-block row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <% data.forEach((each, index) => { %>
+              <div class="col item-block" data-id="<%= each.id %>">
+                <div class="card shadow-sm">
+                  <div class="card-body">
+                    <img src="<%= each.photo_link %>" class="card-img-top" alt="...">
+                    <p class="card-text text-center"><%= each.description %></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="edit-btn btn btn-sm btn-outline-secondary">Edit</button>
+                        <a type="button" class="delete-btn btn btn-sm btn-outline-secondary" href="/delete_prize/<%= each.id %>">Delete</a>
+                      </div>
+                      <small class="fs-5"><%= ratioArr[index] %></small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="text-muted py-5">
+      <div class="container">
+        <p class="float-end mb-1">
+          <a href="#">Back to top</a>
+        </p>
+        <p class="mb-1">Demo draw-api</p>
+      </div>
+    </footer>
+
+    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      window.onload = function() {
+        editItem()
+      }
+
+      function editItem () {
+        document.querySelector('.detail-block').onclick = (e) => {
+          if(e.target.classList.contains('edit-btn') && !e.target.closest('.item-block').querySelector('form')) {
+            const dataId = e.target.closest('.item-block').getAttribute('data-id')
+            const template = document.createElement('template')
+            template.innerHTML = 
+            `
+              <form action="./update_prize/${dataId}" method="POST">
+                <div class="row justify-content-between">
+                  <div class="col">
+                    <div class="mb-3 mt-3">
+                      <input name="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name">
+                    </div>
+                    <div class="mb-3">
+                      <input name="description" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Description">
+                    </div>
+                    <div class="mb-3">
+                      <input name="photo_link" type="url" class="form-control" id="exampleFormControlInput1" placeholder="https://example.com">
+                    </div>
+                    <div class="mb-3">
+                      <input name="weight" type="number" class="form-control" id="exampleFormControlInput1" placeholder="請輸入整數">
+                    </div>
+
+                    <div class="mb-3">
+                      <button type="button" class="btn btn-outline-dark">Dark</button>
+                      <button type="submit" class="btn btn-outline-primary mx-auto my-auto">送出編輯</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            `
+            const closest = e.target.closest('.item-block')
+            closest.append(template.content)
+          }
+        }
+      }
+
+      function lodaPict () {
+        document.querySelector('.detail-block').onclick = (e) => {
+          if(e.target.classList.contains('edit-btn') && !e.target.closest('.item-block').querySelector('form')) {
+            const dataId = e.target.closest('.item-block').getAttribute('data-id')
+            const template = document.createElement('template')
+            template.innerHTML = 
+            `
+              <form action="./update_prize/${dataId}" method="POST">
+                <div class="row justify-content-between">
+                  <div class="col">
+                    <div class="mb-3 mt-3">
+                      <input name="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name">
+                    </div>
+                    <div class="mb-3">
+                      <input name="description" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Description">
+                    </div>
+                    <div class="mb-3">
+                      <input name="photo_link" type="url" class="form-control" id="exampleFormControlInput1" placeholder="https://example.com">
+                    </div>
+                    <div class="mb-3">
+                      <input name="weight" type="number" class="form-control" id="exampleFormControlInput1" placeholder="請輸入整數">
+                    </div>
+
+                    <div class="mb-3">
+                      <button type="button" class="btn btn-outline-dark">Dark</button>
+                      <button type="submit" class="btn btn-outline-primary mx-auto my-auto">送出編輯</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            `
+            const closest = e.target.closest('.item-block')
+            closest.append(template.content)
+          }
+        }
+      }
+
+    </script>
+
+  </body>
+</html>

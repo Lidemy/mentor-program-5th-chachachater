@@ -1,6 +1,7 @@
 <html>
   <head>
     <%- include('template/head.ejs') %>
+    <link rel="stylesheet" href="./css/stylesheet.css" />
   </head>
 
   <body>
@@ -13,8 +14,8 @@
             <input type="text" id="username" name="username" placeholder="">
             <label for="content">PASSWORD</label>
             <input type="password" id="password" name="password" placeholder="">
-            <p style="text-align: center; color: #d80000;">
-            <%= errMessage %>
+            <p class="fs-6 text-center">
+              <%= errMessage %>
             </p>
             <input type="submit" value="SIGN IN">
           </form>

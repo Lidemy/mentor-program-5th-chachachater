@@ -1,55 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <%- include('template/head.ejs') %>
-</head>
-<body>
-  <%- include('template/navbar.ejs') %>
-  <%- include('template/banner.ejs') %>
+  <head>
+    <%- include('./template/head.ejs') %>
+  </head>
+  <body>
+    <%- include('./template/header.ejs')%>
 
-  <div class="container">
-    <div class="article-block">
-      <% articleArr.forEach( each => { %>
-        <div class="article">
-          <div class="article-title">
-            <a href="./article/<%= each.id %>">
-              <%= each.title %>
-            </a>
-            <% if(isLogin) { %>
-            <button>
-                <a href="./update_article/<%= each.id %>">
-                  編輯
-                </a>
-              </button>
-            <% } %>
+    <main>
+
+      <% if (data.length) { %>
+        <section class="py-5 text-center container">
+          <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+              <h1 class="fw-light">結果</h1>
+              <p class="lead text-muted"><%= pict.description %></p>
+              <div class="card mx-auto" style="width: 18rem;">
+                <img src="<%= pict.photo_link %>" class="card-img-top" alt="抽獎結果">
+              </div>
+              <p>
+                <a href="./index" class="btn btn-primary my-2">再抽一次</a>
+              </p>
+            </div>
+          </div>
+        </section>
+      <% } %>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+
+          <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+              <h1 class="fw-light text-center">查看所有抽獎項目</h1>
+            </div>
           </div>
 
-          <div class="article-content">
-            <div class="info-block">
-              <span class="material-icons-outlined md-16">
-                watch_later
-              </span>
-              <%= each.createdAt %>
-              <span class="material-icons-outlined md-16">
-                folder
-              </span>
-              <% if(each.category_id && !each.blog_category.is_deleted ) { %>
-                <!-- // 如果沒選擇文章分類，category_id 會是 0 -->
-                <%= each.blog_category.category %>
-              <% } %>
-            </div>
-            <div class="detail-block text-hidden"><!--
-              --><%= each.content %>
-            </div>
-            <div class="read-block"><a href="./article/<%= each.id %>">Read More</a></div>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <% if (data.length) { %>
+            <% data.forEach((each, index) => { %>
+              <div class="col">
+                <div class="card shadow-sm">
+                  <img src="<%= each.photo_link %>" class="card-img-top" alt="...">
+                  <p class="card-text text-center text-light bg-dark bg-gradient"><%= ratioArr[index] %></p>
+                </div>
+              </div>
+            <% }) %>
+          <% } %>
           </div>
+
         </div>
-      <% }) %>
-    </div>
-  </div>
+      </div>
 
-  <%- include('template/footer.ejs') %>
+    </main>
 
-  <script src="/js/main.js"></script>
-</body>
+    <footer class="text-muted py-5">
+      <div class="container">
+        <p class="float-end mb-1">
+          <a href="#">Back to top</a>
+        </p>
+        <p class="mb-1">Demo draw-api</p>
+      </div>
+    </footer>
+
+    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+
+  </body>
 </html>
