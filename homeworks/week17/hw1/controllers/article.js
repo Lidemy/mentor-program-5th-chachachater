@@ -55,7 +55,7 @@ const articleController = {
     return
   },
   getAllArticle: async (req, res, next) => {
-    const articleAmount  = await ArticleDb.count({
+    const articleAmount = await ArticleDb.count({
       where: { is_deleted: 0 }
     })
     const page = parseInt(req.params.page, 10)
@@ -89,7 +89,6 @@ const articleController = {
     return
   },
   addArticle: async (req, res, next) => {
-    if (!res.locals.isLogin) return res.end()
     let data = null
     try {
       data = await CategoryDb.findAll({
@@ -109,7 +108,6 @@ const articleController = {
     return
   },
   handleAddArticle: async (req, res, next) => {
-    if (!res.locals.isLogin) return res.end()
     if (!req.body.title || !req.body.content) {
       req.flash('errMessage', '請輸入標題及內容')
       next()
@@ -135,7 +133,6 @@ const articleController = {
     return
   },
   updateArticle: async (req, res, next) => {
-    if (!res.locals.isLogin) return res.end()
     const { id } = req.params
     let articleData = null
     let categoryData = null
@@ -164,7 +161,6 @@ const articleController = {
     return
   },
   handleUpdateArticle: async (req, res, next) => {
-    if (!res.locals.isLogin) return res.end()
     if (!req.body.title || !req.body.content) {
       req.flash('errMessage', '請輸入標題及內容')
       next()
@@ -193,7 +189,6 @@ const articleController = {
     return
   },
   handleDeleteArticle: async (req, res, next) => {
-    if (!res.locals.isLogin) return res.end()
     const id = parseInt(req.params.id, 10)
     try {
       await ArticleDb.update({
@@ -211,7 +206,6 @@ const articleController = {
     return
   },
   handleRecoveryArticle: async (req, res, next) => {
-    if (!res.locals.isLogin) return res.end()
     const id = parseInt(req.params.id, 10)
     try {
       await ArticleDb.update({
@@ -229,7 +223,6 @@ const articleController = {
     return
   },
   manageArticle: async (req, res, next) => {
-    if (!res.locals.isLogin) return res.end()
     const articleAmount = await ArticleDb.count({
       where: { is_deleted: 0 }
     })
@@ -259,7 +252,6 @@ const articleController = {
     return
   },
   manageCategory: async (req, res, next) => {
-    if (!res.locals.isLogin) return res.end()
     let data = null
     try {
       data = await CategoryDb.findAll({
@@ -277,12 +269,10 @@ const articleController = {
     return
   },
   addCategory: async (req, res, next) => {
-    if (!res.locals.isLogin) return res.end()
     res.render('add_category.ejs')
     return
   },
   handleAddCategory: async (req, res, next) => {
-    if (!res.locals.isLogin) return res.end()
     if (!req.body.category) {
       req.flash('errMessage', '請輸入分類名稱')
       next()
@@ -303,7 +293,6 @@ const articleController = {
     return
   },
   updateCategory: async (req, res, next) => {
-    if (!res.locals.isLogin) return res.end()
     const { id } = req.params
     let data = null
     try {
@@ -324,7 +313,6 @@ const articleController = {
     return
   },
   handleUpdateCategory: async (req, res, next) => {
-    if (!res.locals.isLogin) return res.end()
     if (!req.body.category) {
       req.flash('errMessage', '請輸入分類名稱')
       next()
@@ -350,7 +338,6 @@ const articleController = {
     return
   },
   handleDeleteCategory: async (req, res, next) => {
-    if (!res.locals.isLogin) return res.end()
     const id = parseInt(req.params.id, 10)
     try {
       await CategoryDb.update({
@@ -368,7 +355,6 @@ const articleController = {
     return
   },
   handleRecoveryCategory: async (req, res, next) => {
-    if (!res.locals.isLogin) return res.end()
     const id = parseInt(req.params.id, 10)
     try {
       await CategoryDb.update({
