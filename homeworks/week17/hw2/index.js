@@ -11,7 +11,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 app.set('trust proxy', 1)
 app.use(session({
-  secret: 'keyboard cat',
+  secret: process.env.secret,
   resave: false,
   saveUninitialized: true,
   cookie: { secure: !true }
@@ -33,8 +33,19 @@ app.set('view engine', 'ejs')
 function redirectBack (req, res) {
   res.redirect('back')
 }
+
 function redirectIndex(req, res) {
   res.redirect('/index')
+}
+
+function checkLogin(req, res, next) {
+  if (!res.locals.isLogin) {
+    res.end()
+    next()
+    return
+  }
+  next()
+  return
 }
 
 // api
@@ -47,11 +58,11 @@ app.post('/register', userController.handleRegister, redirectBack)
 app.get('/login', userController.login)
 app.post('/login', userController.handleLogin, redirectBack)
 app.get('/logout', userController.handleLogout, redirectIndex)
-app.get('/admin', prizeController.managePrize, redirectBack)
-app.post('/add_prize', prizeController.handleAddPrize, redirectBack)
-app.post('/update_prize/:id', prizeController.handleUpdatePrize, redirectBack)
-app.get('/delete_prize/:id', prizeController.handleDeletePrize, redirectBack)
+app.get('/admin', checkLogin, prizeController.managePrize, redirectBack)
+app.post('/add_prize', checkLogin, prizeController.handleAddPrize, redirectBack)
+app.post('/update-prize/:id', checkLogin, prizeController.handleUpdatePrize, redirectBack)
+app.get('/delete-prize/:id', checkLogin, prizeController.handleDeletePrize, redirectBack)
 
 app.listen(port, () => {
-  console.log(`listening now...`)
+  console.log('listening now...')
 })

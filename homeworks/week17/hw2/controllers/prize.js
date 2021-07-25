@@ -1,8 +1,8 @@
 const flash = require('connect-flash')
 const session = require('express-session')
 const db = require('../models')
+
 const PirzeDb = db.draw_api
-const UserDb = db.draw_api_admin
 
 const prizeController = {
   index: async (req, res, next) => {
@@ -25,11 +25,6 @@ const prizeController = {
     return
   },
   handleAddPrize: async (req, res, next) => {
-    if (!res.locals.isLogin) {
-      req.flash('errMessage', '發生錯誤')
-      next()
-      return
-    }
     if (!req.body.name || !req.body.description || !req.body.photo_link || !req.body.weight) {
       req.flash('errMessage', '請輸入全部欄位')
       next()
@@ -63,11 +58,6 @@ const prizeController = {
     return
   },
   handleUpdatePrize: async (req, res, next) => {
-    if (!res.locals.isLogin) {
-      req.flash('errMessage', '發生錯誤')
-      next()
-      return
-    }
     if (req.body.weight && (!Number.isInteger(req.body.weight) || req.body.weight < 0)) {
       req.flash('errMessage', '請輸入正整數或 0')
       next()
@@ -105,11 +95,6 @@ const prizeController = {
     return
   },
   managePrize: async (req, res, next) => {
-    if (!res.locals.isLogin) {
-      req.flash('errMessage', '發生錯誤')
-      next()
-      return
-    }
     let data = null
     try {
       data = await PirzeDb.findAll({
@@ -126,11 +111,6 @@ const prizeController = {
     return
   },
   handleDeletePrize: async (req, res, next) => {
-    if (!res.locals.isLogin) {
-      req.flash('errMessage', '發生錯誤')
-      next()
-      return
-    }
     const id = parseInt(req.params.id, 10)
     let data = null
     try {
