@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('template/head.ejs') %>
+  </head>
+  <body>
+    <%- include('template/navbar.ejs') %>
+    <%- include('template/banner.ejs') %>
+    <div class="container">
+      <div class="article-block">
+        <div class="title-block">
+          <h1>分類管理</h1>
+          <a href="./add_category">新增分類</a>
+          <a href="./admin_article/1">文章管理</a>
+        </div>
+        <% categoryArr.forEach( each => { %>
+          <div class="article admin-block">
+            <div class="article-title">
+                <%= each.category %>
+              <div class="admin-detail">
+                <div class="created-date">
+                  <%= each.createdAt %>
+                </div>
+                <button>
+                  <a href="./update_category/<%= each.id %>">
+                    編輯
+                  </a>
+                </button>
+              <% if (!each.is_deleted) { %>
+                <button>
+                  <a href="./delete_category/<%= each.id %>">
+                    刪除
+                  </a>
+                </button>
+              <% } %>
+              <% if (each.is_deleted) { %>
+                <button>
+                  <a href="./recovery_category/<%= each.id %>">
+                    復原
+                  </a>
+                </button>
+              <% } %>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+    <%- include('template/footer.ejs') %>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
