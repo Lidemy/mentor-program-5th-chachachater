@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('template/head.ejs') %>
+  </head>
+  <body>
+    <%- include('template/navbar.ejs') %>
+    <%- include('template/banner.ejs') %>
+
+    <div class="container">
+      <form class="article-content" action="./add_article" method="POST">
+        <h1>發表文章：</h1>
+        <input type="text" name="title" placeholder="輸入文章名稱">
+        <select class="category" name="category_id">
+          <option value="">請選擇文章分類</option>
+            <% categoryArr.forEach( each => { %>
+              <option value="<%= each.id %>"><%= each.category %></option>
+            <% }) %>
+        <select>
+        <textarea rows="5" cols="75" name="content" placeholder="輸入文章內容"></textarea>
+        <p style="text-align: center; color: #d80000;">
+        <%= errMessage %>
+        </p>
+        <input type="submit" value="送出文章">
+      </form>
+    </div>
+
+    <%- include('template/footer.ejs') %>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

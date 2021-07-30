@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('template/head.ejs') %>
+  </head>
+  <body>
+    <%- include('template/navbar.ejs') %>
+    <%- include('template/banner.ejs') %>
+    <div class="container">
+      <div class="article-block">
+        <div class="title-block">
+          <h1>文章管理</h1>
+          <a href="./add_article">新增文章</a>
+          <a href="./admin_category">分類管理</a>
+          <%= errMessage %>
+        </div>
+        <% articleArr.forEach( each => { %>
+          <div class="article admin-block">
+            <div class="article-title">
+              <a href="./article/<%= each.id %>">
+                <%= each.title %>
+              </a>
+              <div class="admin-detail">
+                <div class="created-date">
+                  <%= each.createdAt %>
+                </div>
+                <button class="edit-btn">
+                  <a href="./update_article/<%= each.id %>">編輯</a>
+                </button>
+              <% if (!each.is_deleted) { %>
+                <button class="delete-btn">
+                  <a href="./delete_article/<%= each.id %>">刪除</a>
+                </button>
+              <% } %>
+              <% if (each.is_deleted) { %>
+                <button class="edit-btn">
+                  <a href="./recovery_article/<%= each.id %>">復原</a>
+                </button>
+              <% } %>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+      <div class="page-block">
+        <div class="page-total">總共<%= articleAmount %>筆文章，現在在第<%= page %>頁</div>
+        <% if(page != 1) { %>
+          <a href="./admin_article/1">首頁</a>
+          <a href="./admin_article/<%= page - 1 %>">上一頁</a>
+        <% } %>
+        <% if(page != pageAmount) { %>
+          <a href="./admin_article/<%= page + 1 %>">下一頁</a>
+          <a href="./admin_article/<%= pageAmount %>">最後一頁</a>
+        <% } %>
+      </div>
+    </div>
+    </div>
+    <%- include('template/footer.ejs') %>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
