@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('./template/head.ejs')%>
+    <link rel="stylesheet" href="./css/draw.css" />
+  </head>
+  <body>
+    <%- include('./template/navbar.ejs')%>
+    <div class="container-prize" style="background-image: url('<%= pict.photo_link %>');">
+      <div class="draw-result">
+        <div class="draw-title">
+          <%= pict.description %>
+        </div>
+        <button class="btn-draw"><a href="/draw">我要再抽一次</a></button>
+      </div>
+    </div>
+
+    <%- include('./template/footer.ejs')%>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

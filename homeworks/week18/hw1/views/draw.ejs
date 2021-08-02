@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('./template/head.ejs')%>
+    <link rel="stylesheet" href="./css/draw.css" />
+  </head>
+  <body>
+    <%- include('./template/navbar.ejs')%>
+    <div class="container">
+      <div class="info">
+        <h1>2020 夏日輕盈特賞！ 抽獎活動辦法</h1>
+        <div class="info-content">
+          <div class="date">
+          <p class="title">活動期間：</p>
+          <p class="content">2020/06/01~2020/07/01</p>
+          </div>
+
+          <div class="underline"></div>
+
+          <div class="description">
+            <p class="title">活動說明：</p>
+            <p class="content">
+              今天老闆佛心來著決定給大家發獎勵，有看有機會，沒看只能幫QQ！
+              只要在店內消費滿1000000元即有機會獲得 - 頭獎日本東京來回雙人遊！
+            </p>
+          </div>
+          
+          <div class="underline"></div>
+
+          <div class="prize">
+            <p class="title">獎  品：</p>
+            <p class="content">
+              <% data.forEach( each => { %>
+              ❤ <%= each.name %><br>
+              <% }) %>
+            </p>
+          </div>
+
+          <div class="underline"></div>
+
+          <button class="btn-draw"><a href="/handle-draw">我要抽獎</a></button>
+        </div>
+      </div>
+    </div>
+
+    <%- include('./template/footer.ejs')%>
+  </body>
+</html>

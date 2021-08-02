@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Album example · Bootstrap v5.0</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+    <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('./template/headerManage.ejs')%>
+    <main>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+
+          <div class="row py-lg-3">
+            <div class="col-lg-6 col-md-8 mx-auto">
+              <h1 class="fw-light text-center">所有商品</h1>
+            </div>
+          </div>
+
+          <p>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              新增商品
+            </button>
+            <% if(errMessage.length) { %>
+              <button type="button" class="btn btn-danger disabled"><%= errMessage %></button>
+            <%  } %>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <form action="./add-item" method="POST" enctype="multipart/form-data">
+              <div class="row justify-content-between">
+                <div class="col-8">
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Name</label>
+                    <input name="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Price</label>
+                    <input name="price" type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                  </div>
+                  <div class="mb-3">
+                    <label for="inputGroupFile04" class="form-label">Image</label>
+                    <input name="image" type="file" class="image-uploader form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                  </div>
+                  <div class="mb-3">
+                    <button type="submit" class="btn btn-outline-primary mx-auto my-auto">新增</button>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="card" style="width: 18rem;">
+                    <img src="https://img.icons8.com/ios/250/000000/image.png" class="image-preview card-img-top" alt="preview image">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="detail-block row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+              <% if(data) { %>
+                <% data.forEach((each, index) => { %>
+                  <div class="col item-block" data-id="<%= each.id %>" data-on-sale="<%= each.on_sale%>">
+                      <div class="card shadow-sm">
+                        <div class="card-body">
+                          <img src="<%= each.link%>" class="card-img-top" alt="...">
+                          <p class="card-text text-center"><%= each.name %></p>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                              <button type="button" class="edit-btn btn btn-sm btn-outline-secondary">Edit</button>
+                              <!-- 上傳一張預設圖片作為顯示 -->
+                              <a type="button" class="delete-btn btn btn-sm btn-outline-secondary" href="/delete-item/<%= each.id %>">Delete</a>
+                            </div>
+                            <small class="fs-5">$ <%= each.price %></small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                <% }) %>
+              <% } %>
+            </div>
+
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="text-muted py-5">
+      <div class="container">
+        <p class="float-end mb-1">
+          <a href="#">Back to top</a>
+        </p>
+        <p class="mb-1">Demo foodRestaurant</p>
+      </div>
+    </footer>
+
+    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      updateItem()
+      preloadImage ()
+
+      function updateItem () {
+        document.querySelector('.detail-block').onclick = (e) => {
+          if(e.target.classList.contains('edit-btn') && !e.target.closest('.item-block').querySelector('form')) {
+            const dataId = e.target.closest('.item-block').getAttribute('data-id')
+            const onSale = e.target.closest('.item-block').getAttribute('data-on-sale')
+            const imageHash = e.target.closest('.item-block').getAttribute('data-image-hash')
+            let formTemplate = 
+            `
+              <form action="./update-item/${dataId}" method="POST" enctype="multipart/form-data">
+                <div class="row justify-content-between">
+                  <div class="col">
+                    <div class="mb-3 mt-3">
+                      <input name="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name">
+                    </div>
+                    <div class="mb-3">
+                      <input name="price" type="number" class="form-control" id="exampleFormControlInput1" placeholder="Price">
+                    </div>
+                    <div class="mb-3">
+                      <label for="inputGroupFile04" class="form-label">Image</label>
+                      <input name="image" type="file" class="image-uploader form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="on-sale" id="exampleRadios1" value="0" $off-sale>
+                      <label class="form-check-label" for="exampleRadios1">
+                        下架中
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="on-sale" id="exampleRadios2" value="1" $on-sale>
+                      <label class="form-check-label" for="exampleRadios2">
+                        上架中
+                      </label>
+                    </div>
+                    <div class="mb-3">
+                      <button type="submit" class="btn btn-outline-primary mx-auto my-auto">送出編輯</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            `
+            const template = document.createElement('template')
+            if(onSale === 'true') {
+              template.innerHTML = formTemplate.replace('$on-sale', 'checked')
+            } else {
+              template.innerHTML = formTemplate.replace('$off-sale', 'checked')
+            }
+            const closest = e.target.closest('.item-block')
+            closest.append(template.content)
+          }
+        }
+      }
+      function preloadImage () {
+        const imageUploader = document.querySelector('.image-uploader')
+        const imagePreviewer = document.querySelector('.image-preview')
+        const fileReader = new FileReader()
+        imageUploader.addEventListener('change', function () {
+          console.log(this.files) // this 在 arrow fn 會是 windows
+          if(this.files.length > 0) {
+            fileReader.readAsDataURL(this.files[0])
+          } else {
+            imagePreviewer.src = ''
+          }
+        }, false)
+        fileReader.addEventListener('load', function () {
+          imagePreviewer.src = this.result
+        }, false)
+      }
+    </script>
+
+  </body>
+</html>

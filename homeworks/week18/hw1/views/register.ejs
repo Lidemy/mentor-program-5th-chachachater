@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <%- include('template/head.ejs') %>
+    <link rel="stylesheet" href="./css/register.css" />
+  </head>
+
+  <body>
+    <div class="user-block">
+        <h1>Register</h1>
+        <div class="comment">
+          <form action="./register" method="POST" enctype="multipart/form-data">
+            <label for="username">USERNAME</label>
+            <input type="text" id="username" name="username" placeholder="">
+            <label for="content">PASSWORD</label>
+            <input type="password" id="password" name="password" placeholder="">
+           <% if(errMessage.length) { %>
+              <p class="error-block">
+                <%= errMessage %>
+              </p>
+            <% } %>
+            <input type="submit" value="Register">
+          </form>
+          <button><a href="/login">Login</a></button>
+        </div>
+    </div>
+  </body>
+</html>

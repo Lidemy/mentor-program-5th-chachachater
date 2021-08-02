@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Album example · Bootstrap v5.0</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+    <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('./template/headerManage.ejs')%>
+    <main>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+
+          <div class="row py-lg-3">
+            <div class="col-lg-6 col-md-8 mx-auto">
+              <h1 class="fw-light text-center">FAQ</h1>
+            </div>
+          </div>
+
+          <p>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              新增 FAQ
+            </button>
+            <% if(errMessage.length) { %>
+              <button type="button" class="btn btn-danger disabled"><%= errMessage %></button>
+            <%  } %>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <form action="./add-faq" method="POST" enctype="multipart/form-data">
+              <div class="row justify-content-between">
+                <div class="col-12">
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Order</label>
+                    <input name="order" type="number" class="form-control" id="exampleFormControlInput1" placeholder="請輸入正整數">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Title</label>
+                    <input name="title" type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Content</label>
+                    <input name="content" type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                  </div>
+                  <div class="mb-3">
+                    <button type="submit" class="btn btn-outline-primary mx-auto my-auto">新增</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="detail-block">
+            <% if(data) { %>
+              <% data.forEach((each, index) => { %>
+                <div class="card item-block" data-id="<%= each.id %>">
+                  <div class="card-header">
+                    <%= each.order %>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= each.title %></h5>
+                    <p class="card-text"><%= each.content %></p>
+                    <div class="btn-group">
+                      <button type="button" class="edit-btn btn btn-sm btn-outline-secondary">Edit</button>
+                      <a type="button" class="delete-btn btn btn-sm btn-outline-secondary" href="/delete-faq/<%= each.id %>">Delete</a>
+                    </div>
+                  </div>
+                </div>
+              <% }) %>
+            <% } %>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="text-muted py-5">
+      <div class="container">
+        <p class="float-end mb-1">
+          <a href="#">Back to top</a>
+        </p>
+        <p class="mb-1">Demo foodRestaurant</p>
+      </div>
+    </footer>
+
+    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      window.onload = function() {
+        editItem()
+      }
+
+      function editItem () {
+        document.querySelector('.detail-block').onclick = (e) => {
+          if(e.target.classList.contains('edit-btn') && !e.target.closest('.item-block').querySelector('form')) {
+            const dataId = e.target.closest('.item-block').getAttribute('data-id')
+            const template = document.createElement('template')
+            template.innerHTML = 
+            `
+              <form action="/update-faq/${dataId}" method="POST" enctype="multipart/form-data">
+                <div class="">
+                  <div class="">
+                    <div class="mb-3">
+                      <input name="order" type="number" class="form-control" id="exampleFormControlInput1" placeholder="請輸入整數">
+                    </div>
+                    <div class="mb-3 mt-3">
+                      <input name="title" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title">
+                    </div>
+                    <div class="mb-3">
+                      <input name="content" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Content">
+                    </div>
+                    <div class="mb-3">
+                      <button type="submit" class="btn btn-outline-primary mx-auto my-auto">送出編輯</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            `
+            const closest = e.target.closest('.item-block')
+            closest.append(template.content)
+          }
+        }
+      }
+
+    </script>
+
+  </body>
+</html>

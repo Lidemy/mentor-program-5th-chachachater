@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('./template/head.ejs')%>
+    <link rel="stylesheet" href="./css/menu.css" />
+  </head>
+  <body>
+    <%- include('./template/navbar.ejs')%>
+    <section class="banner"></section>
+    <section class="section">
+      <h2 class="section-title">熱銷搶購中</h2>
+      <div class="section-images">
+        <div><span><img src="./css/picture/ad-01.png" alt="food-picture" /></span></div>
+        <div><span><img src="./css/picture/ad-02.png" alt="food-picture" /></span></div>
+        <div><span><img src="./css/picture/ad-03.png" alt="food-picture" /></span></div>
+      </div>
+    </section>
+
+    <section class="wrapper-ad">
+      <div class="picture-block"></div>
+      <div class="content-block">
+        <h2>在家也能輕鬆<br>咬一口我們的鮮甜清爽</h2>
+        <p>您再也不必受限於時間或地點，隨時隨地透過我們24小時的線上購物選購，咬一口廚房堅持以細選食材、輕盈口感，呈現食材本身的原滋原味。
+          <br>
+          <br>我們將咬一口的經典菜色研發製成相應當季的包裝食品及各式精美的伴手禮盒。將剛出爐的新鮮迅速送達家人手中，也適合與更多喜愛咬一口的親朋好友分享難得的健康滋味。
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-shopping">
+        <div>立即輕鬆選購</div>
+        <div>︾</div>
+      </div>
+      <div class="item-block">
+        <!-- 處理 table 初始化(為空)的情況 -->
+        <% if(data) { %>
+          <% data.forEach( each => { %>
+            <!-- 只顯示確定上架的商品 -->
+            <% if(each.on_sale) { %>
+              <div class="single-item" data-id="#">
+                <div class="photo"><img id="imageView" src="<%= each.link%>" /></div>
+                <div class="detail">
+                  <p class="name"><%= each.name %></p>
+                  <p class="price"><%= each.price %></p>
+                </div>
+                <button class="shopping-cart">加入購物車</button>
+              </div>
+            <% } %>
+          <% }) %>
+        <% } else { %>
+          <p>尚未有可選的商品</p>
+          <% } %>
+    </section>
+
+    <div class="wrapper">
+      <section class="section">
+        <h2 class="section-title">我們在哪裡？</h2>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.0027469618926!2d121.56235021534732!3d25.033980844445466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da9c9e1f%3A0x1206bcf082fd10a6!2sNo.%207%2C%20Section%205%2C%20Xinyi%20Rd%2C%20Xinyi%20District%2C%20Taipei%20City%2C%20110!5e0!3m2!1sen!2stw!4v1620126178159!5m2!1sen!2stw"
+          width="100%"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </section>
+    </div>
+
+    <%- include('./template/footer.ejs')%>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
