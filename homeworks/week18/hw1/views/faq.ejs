@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('./template/head.ejs')%>
+    <link rel="stylesheet" href="./css/faq.css" />
+  </head>
+  <body>
+    <%- include('./template/navbar.ejs')%>
+    <div class="wrapper">
+      <section class="section">
+        <h2 class="section__title">FAQ - 常見問題</h2>
+        <div class="question">
+          <% if(data) { %>
+            <% data.forEach( each => { %>
+              <div class="qustion-info">
+                <h3 class="question-title"><%= each.title %></h3>
+                <p class="question-content"><%= each.content %></p>
+                <div class="base-line"></div>
+              </div>
+            <% }) %>
+          <% } %>
+        </div>
+      </section>
+    </div>
+
+    <%- include('./template/footer.ejs')%>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

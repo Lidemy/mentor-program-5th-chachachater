@@ -1,0 +1,284 @@
+body {
+  font-family: 'Questrial', 'MicrosoftJhengHei', sans-serif;
+}
+
+.navbar {
+  position: sticky;
+  z-index: 3;
+  width: 100%;
+  top: 0;
+}
+
+.navbar .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 84px;
+  background-color: white;
+}
+
+.site-name {
+  color:#489846;
+  font-size: 36px;
+}
+
+.navbar-list {
+  display: flex;
+  list-style: none;
+  margin:0;
+  padding:0;
+  font-size: 18px;
+}
+
+.navbar-list li{
+  margin-left: 12px;
+  border-radius: 8px;
+  transition: background-color 0.5s;
+}
+
+.navbar-list li.active {
+  background-color: #ff7286;
+}
+
+.navbar-list li.active,
+.navbar-list li:hover {
+  background-color: #ff7286;
+}
+
+.navbar-list li.active a,
+.navbar-list li:hover a {
+  color:white;
+}
+
+.navbar-list li a {
+  text-decoration: none;
+  color: black;
+  display: block;
+  padding:12px 24px;
+  border-radius: 8px;
+}
+
+.navbar input {
+  position: absolute;
+  right: 0.5%;
+  top: 20px;
+  display: inline-block;
+  height: 31px;
+  width: 31px;
+  opacity: 0;
+  z-index: 1;
+  margin: 5px;
+}
+
+.navbar span {
+  background-color: #484848;
+  height: 6px;
+  width: 29px;
+  display: block;
+  margin: 6px;
+  z-index: 1;
+}
+
+.navbar .burger {
+  position: absolute;
+  top: 20px;
+  right: 0.5%;
+  z-index: 0;
+}
+
+.wrapper {
+  margin: 0 auto; /*center*/
+  padding: 0px 85px;
+}
+
+h2 {
+  margin: 0px;
+}
+
+.section {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.section__title {
+  font-size: 36px;
+
+  display: inline-block;
+  border-left: 15px solid #a3dea2;
+  padding-left: 17px;
+
+  margin-bottom: 36px;
+}
+
+.question {
+  width: 70%;
+  text-align: left;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,0%);
+}
+
+.question-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 29px;
+  margin-bottom: 24px;
+  line-height: 1.5rem;
+}
+
+.base-line {
+  width:100%;
+  height:1px;
+  background: #a6e2c0;
+}
+
+.question-content {
+  font-size: 16px;
+  line-height: 2em;
+  margin: 0px 0px 45px 50px;
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+/* 給每一個問題標題前面加上 Q1,2,3..., 用 SCSS 寫 for loop 會更快 */
+.question :nth-child(n)>h3::before {
+  content: 'Q:';
+  font-weight: bold;
+  font-size: 24px;
+  color: #70b282;
+  margin-right: 16px;
+}
+
+footer {
+  margin-top: 48px;
+}
+.footer-bottom {
+  background-color: #35564b;
+  padding: 12px;
+  text-align: center;
+  color: white 16px;
+}
+
+.footer-top {
+  background-color: #e8efee;
+  padding: 32px;
+  color: #484848;
+}
+
+.footer-top .wrapper {
+  display:flex;
+  justify-content: space-between;
+}
+
+.footer-info {
+  margin-right: 16px;
+}
+
+.footer-info div{
+  color: #484848;
+}
+
+.footer-info div + div{
+  margin-top: 10px;
+}
+
+.footer-site {
+  font-size: 36px;
+  color: #489846;
+}
+
+@media(max-width: 768px) {
+
+  .navbar .wrapper {
+    flex-direction: column;
+    height: 100px;
+    justify-content: space-between;
+    padding: 0px;
+  }
+
+  .site-name {
+    margin-top: 10px;
+  }
+
+  .navbar-list {
+    display: flex;
+    width: 100%;
+  }
+
+  .navbar-list li {
+    flex: 1;
+    margin-left: 0;
+    border-radius: 0; /*因為 mobile 沒有 hover 所以取消*/
+    text-align: center;
+  }
+
+  .question-info {
+    flex-shrink:1;
+  }
+
+  .question-content {
+    word-break: break-word;
+    position: static;
+  }
+
+  .footer__top .wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .footer__info {
+    margin-right: 0;
+    margin-top: 16px;
+  }
+}
+
+@media(max-width: 527px) {
+  .navbar .wrapper {
+    height: fit-content;
+    padding: 10px;
+  }
+
+/* 讓手機板有漢堡選單 */
+  .navbar {
+    padding: 0;
+  }
+  .navbar-list {
+    display: block;
+    width: 100%;
+    top: 71px;
+    position: absolute;
+    /* 清單原本飄出視窗外, ckeckbox 被點擊之後取消 transform 讓清單飄回來 */
+    transform: translate(0%,-170%);
+  }
+
+  /* 一旦 checkbox 被點選之後, 讓選單從視窗外面飄回來 */
+  input:checked ~ .navbar-list {
+    transform: none;
+    transition: 0.4s;
+    z-index: 3;
+    width: 100%;
+    left: 0;
+    top: 71px;
+    background: whitesmoke;
+    opacity: 95%;
+  }
+
+  /* 讓漢堡選單被點選之後有出現 X 的動畫效果, 需要配合 JS */
+  .change :nth-child(1) {
+    transform: rotate(45deg);
+    position: relative;
+    top: 11px;
+  }
+
+  .change :nth-child(2) {
+    display: none;
+  }
+
+  .change :nth-child(3) {
+    transform: rotate(-45deg);
+    position: relative;
+    top: -1px;
+  }
+}

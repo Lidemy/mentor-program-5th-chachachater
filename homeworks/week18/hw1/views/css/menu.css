@@ -1,0 +1,506 @@
+body,
+html {
+  height: 100%;
+}
+body {
+  font-family: 'Questrial', 'MicrosoftJhengHei', sans-serif;
+}
+
+h2 {
+  margin: 0px;
+}
+
+.navbar {
+  position: sticky;
+  z-index: 56;
+  width: 100%;
+  top: 0;
+}
+
+.navbar .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 84px;
+  background-color: white;
+}
+
+.site-name {
+  color:#489846;
+  font-size: 36px;
+}
+
+.navbar-list {
+  display: flex;
+  list-style: none;
+  margin:0;
+  padding:0;
+  font-size: 18px;
+}
+
+.navbar-list li{
+  margin-left: 12px;
+  border-radius: 8px;
+  transition: background-color 0.5s;
+}
+
+.navbar-list li.active {
+  background-color: #ff7286;
+}
+
+.navbar-list li.active,
+.navbar-list li:hover {
+  background-color: #ff7286;
+}
+
+.navbar-list li.active a,
+.navbar-list li:hover a {
+  color:white;
+}
+
+.navbar-list li a {
+  text-decoration: none;
+  color: black;
+  display: block;
+  padding:12px 24px;
+  border-radius: 8px;
+}
+
+.wrapper {
+  margin: 0 auto; /*置中*/
+  padding: 0px 85px;
+}
+
+.banner {
+  background-image: url(./picture/f-title.png);
+  height: 30%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.section {
+  text-align: center;
+  margin-top: 80px;
+  padding: 80px 85px 0 85px;
+}
+
+.section-title {
+  font-size: 36px;
+  display: inline-block;
+  border-left: 15px solid #a3dea2;
+  padding-left: 17px;
+  margin-bottom: 36px;
+}
+
+.section-desc {
+  font-size: 16px;
+  line-height: 2em;
+  margin: 0px 0px 68px 0px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button {
+  padding: 60px 80px;
+  font-size: 36px;
+  color: #3e613d;
+  display: inline-block;
+
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.1s;
+}
+
+.button:hover {
+  transform:scale(1.1)
+}
+
+.btn-order {
+  background-color: #a8e8e1;
+}
+
+.btn-query {
+  margin-left: 23px;
+  background-color: #f9f9b5;
+}
+
+.section-images {
+  display: flex;
+  justify-content: center;
+}
+
+.section-images div {
+  width: 34%;
+  overflow: hidden;
+  position: relative;
+}
+
+.section-images img {
+  position: relative;
+  width: 100%;
+  vertical-align: bottom;
+  transition: 0.5s;
+}
+
+.section-images div:nth-child(1) {
+  position: relative;
+}
+
+/* hover 之後變暗+顯示餐點名稱的效果 */
+.section-images div:nth-child(n):hover::after {
+  padding-top: 30%;
+  font-size: 20px;
+  color: white;
+  content: "售完";
+  position: absolute;
+  background: rgba(165, 165, 165, 0.5);
+  left: 0;
+  width: -webkit-fill-available;
+  z-index: 55;
+  height: -webkit-fill-available;
+}
+
+.section-images span {
+  display: inline-block;
+  width: 100%;
+}
+
+.section-images div:nth-child(n):hover span::after {
+  top: 50%;
+  left: 50%;
+  font-size: 25px;
+  /* color: white; */
+  content: "";
+  position: absolute;
+  background: rgb(0 0 0 / 70%);
+  /* left: 0; */
+  width: 80px;
+  z-index: 55;
+  height: 80px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+footer {
+  margin-top: 48px;
+}
+
+.footer-bottom {
+  background-color: #35564b;
+  padding: 12px;
+  text-align: center;
+  color: white 16px;
+}
+
+.footer-top {
+  background-color: #e8efee;
+  padding: 32px 0;
+  color: #484848;
+}
+
+.footer-top .wrapper {
+  display:flex;
+  justify-content: space-between;
+}
+
+.footer-info {
+  margin-right: 16px;
+}
+
+.footer-info div{
+  color: #484848;
+}
+
+.footer-info div + div{
+  margin-top: 10px;
+}
+
+.footer-site {
+  font-size: 36px;
+  color: #489846;
+}
+
+.wrapper-ad {
+  display: flex;
+  margin: 125px 0 0 0;
+  padding: 0 85px;
+}
+
+
+.picture-block {
+  height: 674px;
+  background-image: url(./picture/order-ad.png);
+  width: 674px;
+}
+
+.content-block {
+  flex-shrink: 3;
+  padding: 240px 0 0 40px;
+ }
+
+ .content-block p {
+   line-height: 1.31;
+
+ }
+ .content-block h2 {
+  display: inline-block;
+  font-size: 26px;
+  line-height: 1.38;
+  color: #357933;
+ }
+
+.section-shopping {
+  font-size: 18px;
+  display: inline-block;
+  margin: 0 auto 87px auto;
+}
+.section-shopping > div:first-child {
+  margin: 0px auto 28px auto;
+}
+
+.item-block {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.single-item {
+  margin-bottom: 20px;;
+}
+
+.single-item .detail {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.detail > p:not(:first-child) {
+  border-left: 1px solid black;
+  padding-left: 15px;
+  color: #3f633c;
+}
+
+.detail > p:first-child {
+  padding-right: 15px; 
+  color: #3f633c;
+}
+
+.detail > .price::before {
+  content: "$";
+  color: #3f633c;
+}
+
+/* .single-item .photo {
+  width: 292px;
+  height: 292px;
+  background-image: url(./picture/f-001-292.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+.single-item button {
+  border: 1px solid #3f633c;
+  background-color: #f1fff2;
+  color: #3f633c;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.single-item {
+  width: 292px;
+  height: 292px;
+}
+.single-item img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* .wrapper-item > .title {
+  margin: 97px auto 87px auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.item-block {
+  display: flex;
+}
+
+.single-item .photo {
+  width: 292px;
+  height: 292px;
+  background-image: url(./picture/f-001-292.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.single-item .photo {
+  width: 292px;
+  height: 292px;
+  background-image: url(./picture/f-001-292.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+.navbar input {
+  position: absolute;
+  right: 0.5%;
+  top: 20px;
+  display: inline-block;
+  height: 31px;
+  width: 31px;
+  opacity: 0;
+  z-index: 1;
+  margin: 5px;
+}
+
+.navbar span {
+  background-color: #484848;
+  height: 6px;
+  width: 29px;
+  display: block;
+  margin: 6px;
+  z-index: 1;
+}
+
+.navbar .burger {
+  position: absolute;
+  top: 20px;
+  right: 0.5%;
+  z-index: 0;
+}
+
+
+@media(max-width: 768px) {
+  .navbar .wrapper {
+    flex-direction: column;
+    height: 100px;
+    justify-content: space-between;
+    padding: 0px;
+  }
+
+  .site-name {
+    margin-top: 10px;
+  }
+
+  .navbar-list {
+    display: flex;
+    width: 100%;
+  }
+
+  .navbar-list li {
+    flex: 1;
+    margin-left: 0;
+    border-radius: 0; /*因為 mobile 沒有 hover 所以取消*/
+    text-align: center;
+  }
+
+  .btn-query {
+    margin-left: 0px;
+    margin-top: 16px;
+  }
+
+  .banner ~ .wrapper {
+    padding-top: 80px;
+  }
+
+  .section-images {
+    flex-direction: column;
+  }
+
+  .section-images div {
+    width: 100%;
+  }
+
+  .wrapper-comments {
+    margin: auto;
+}
+
+  .footer-top .wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .footer-info {
+    margin-right: 0;
+    margin-top: 16px;
+  }
+
+  .comments-info {
+    display: block;
+    word-break: break-word;
+  }
+
+  .single-comment + .single-comment {
+    border: solid 1px #c7e5ec;
+    margin-top: 60px;
+  }
+}
+
+@media(max-width: 527px) {
+  .navbar .wrapper {
+    height: fit-content;
+    padding: 10px;
+  }
+
+/* 讓手機板有漢堡選單 */
+  .navbar {
+    padding: 0;
+  }
+  .navbar-list {
+    display: block;
+    width: 100%;
+    top: 71px;
+    position: absolute;
+    /* 清單原本飄出視窗外, ckeckbox 被點擊之後取消 transform 讓清單飄回來 */
+    transform: translate(0%,-170%);
+  }
+
+  /* 一旦 checkbox 被點選之後, 讓選單從視窗外面飄回來 */
+  input:checked ~ .navbar-list {
+    transform: none;
+    transition: 0.4s;
+    z-index: 3;
+    width: 100%;
+    left: 0;
+    top: 71px;
+    background: whitesmoke;
+    opacity: 95%;
+  }
+
+  /* 讓漢堡選單被點選之後有出現 X 的動畫效果, 需要配合 JS */
+  .change :nth-child(1) {
+    transform: rotate(45deg);
+    position: relative;
+    top: 11px;
+  }
+
+  .change :nth-child(2) {
+    display: none;
+  }
+
+  .change :nth-child(3) {
+    transform: rotate(-45deg);
+    position: relative;
+    top: -1px;
+  }
+
+  .banner {
+    background-image: url(./picture/bg.jpg);
+    height: 300px;
+    background-attachment: fixed;
+    background-position: 3%,0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .banner::after {
+    background: rgba(0, 0, 0, 0.55);
+  }
+}
