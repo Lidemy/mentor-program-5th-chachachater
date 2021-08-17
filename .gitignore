@@ -2,3 +2,8 @@ node_modules/
 conn.php
 .DS_STORE
 .eslintcache
+babel.config.json
+gulpfile.js
+homeworks/week12/hw1/connection.php
+lib/
+note/
