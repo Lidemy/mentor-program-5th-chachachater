@@ -24,6 +24,9 @@ function App() {
         <Router>
           <Header />
           <Switch>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
             <Route path="/index/:page">
               <HomePage />
             </Route>
