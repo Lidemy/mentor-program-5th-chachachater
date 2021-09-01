@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useParams, Link } from "react-router-dom";
-import { getPosts, getAllPosts } from "../../../WebAPI";
+import { getPosts, getPageCount } from "../../../WebAPI";
 import PropTypes from "prop-types";
 
 const Root = styled.div`
@@ -100,8 +100,9 @@ export default function HomePage() {
       });
   }, pageArr);
   useEffect(() => {
-    getAllPosts().then((posts) => {
-      setTotalPage(Math.ceil(posts.length / 5));
+    getPageCount().then((pageCount) => {
+      console.log(parseInt(pageCount, 10))
+      setTotalPage(pageCount);
     });
   }, []);
 

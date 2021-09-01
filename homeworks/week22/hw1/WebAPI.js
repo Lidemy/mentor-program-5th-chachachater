@@ -42,6 +42,15 @@ export function post(title, body) {
     .catch((err) => console.log(err));
 }
 
+export function getPageCount() {
+  return fetch(`${baseUrl}/posts?_page=1`)
+    .then((res) => {
+      const pageCount = res.headers.get('x-total-count')
+      return Math.ceil(parseInt(pageCount, 10) / 5)
+    })
+    .catch((err) => console.log(err));
+}
+
 export function register(nickname, username, password) {
   return fetch(`${baseUrl}/register`, {
     method: "POST",
