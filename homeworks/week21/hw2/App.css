@@ -1,0 +1,12 @@
+.square {
+  box-sizing: border-box;
+  border: black solid 1px;
+  width: 20px;
+  height: 20px;
+  float: left;
+  display: block;
+}
+
+.board-row {
+  display: flex;
+}
