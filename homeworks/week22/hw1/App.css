@@ -1,0 +1,12 @@
+html * {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+}
+
+#root {
+  flex-grow: 1;
+}
