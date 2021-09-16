@@ -5,7 +5,10 @@ module.exports = {
     node: true,
     jest: true
   },
-  extends: '@lidemy/eslint-config-lidemy',
+  extends: [
+    '@lidemy/eslint-config-lidemy',
+    "prettier"
+  ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly'
