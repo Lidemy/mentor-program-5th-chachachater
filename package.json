@@ -31,5 +31,6 @@
   "description": "（第五期課綱還在調整中，現在看到的不是最終版）",
   "directories": {
     "example": "examples"
-  }
+  },
+  "dependencies": {}
 }
